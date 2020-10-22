@@ -1,0 +1,412 @@
+  /* 산하추가- nav에 씀 */
+ 
+.col-peo{
+  color: black;
+  font-size: 150%;
+  
+}
+
+
+nav div div a img{
+  width: 25%;
+  
+}
+.menu{
+  margin-top: 0%;
+  
+}
+
+div .menu{
+  margin-top:10%;
+  
+}
+nav{
+  /* 메뉴고정 해제 */
+  /* position: fixed;  */
+  left: 0; top: 0%; 
+  width: 100%; 
+
+  background-color: #ffffff;
+  z-index: 999;
+
+}
+nav div{
+  display: flex; 
+  position: relative;
+  width: 1200px; 
+  margin: 0 auto;
+
+}
+nav div a{
+  flex: 1;
+  display: block;
+  bottom: 5%;
+  height: 50px;
+  line-height: 40px;
+  text-align:center;
+  color: #000;
+}
+
+nav div a:hover {
+  text-decoration: none;
+  color: #000;
+}
+
+nav div a.on{
+  color: #ed1c24;
+}
+
+nav div > span{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100px;
+  height: 3px;
+  background-color: #ed1c24;
+  opacity:0;
+  transition: all .5s;
+
+}
+
+
+nav div a:nth-child(1).on ~ span {left :70px; opacity:1;}
+nav div a:nth-child(2).on ~ span {left :310px; opacity:1;}
+nav div a:nth-child(3).on ~ span {left :550px; opacity:1;}
+nav div a:nth-child(4).on ~ span {left :790px; opacity:1;}
+nav div a:nth-child(5).on ~ span {left :1030px; opacity:1;}
+
+
+/* 랭크 */
+
+@-webkit-keyframes sparkle {
+  from {
+    background-position: 0% 100%;
+  }
+  to {
+    background-position: 200% 100%;
+  }
+}
+
+@keyframes sparkle {
+  from {
+    background-position: 0% 100%;
+  }
+  to {
+    background-position: 200% 100%;
+  }
+}
+.bling {
+  background: white;
+  display: inline-block;
+  padding: 1em;
+  
+  border-radius: 4px;
+  position: relative;
+  text-align: center;
+  font-weight:bolder;
+}
+.bling:before {
+  -webkit-animation: sparkle 4s infinite linear;
+          animation: sparkle 4s infinite linear;
+  background: -webkit-gradient(linear, left top, right top, from(#7FEFBD), color-stop(11%, #FFF689), color-stop(22%, #EC0B43), color-stop(33%, #7FEFBD), color-stop(44%, #FFF689), color-stop(55%, #EC0B43), color-stop(66%, #7FEFBD), color-stop(77%, #FFF689), color-stop(88%, #EC0B43), to(#7FEFBD));
+  background: linear-gradient(90deg, #7FEFBD 0%, #FFF689 11%, #EC0B43 22%, #7FEFBD 33%, #FFF689 44%, #EC0B43 55%, #7FEFBD 66%, #FFF689 77%, #EC0B43 88%, #7FEFBD 100%);
+  background-size: 300% 100%;
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  -webkit-filter: blur(3px);
+          filter: blur(3px);
+  z-index: -1;
+  -webkit-transform: scale(0.99) translateY(3px);
+          transform: scale(0.99) translateY(3px);
+}
+.rank{
+  margin-top: 6%;
+  width: 70%;
+  margin-left: 15%;
+  
+  
+}
+.sector1{
+  margin-top:3%;
+
+}
+.sector1 h5{
+  font-weight: bolder;
+  z-index:2000;
+  float:left;
+  
+
+}
+.basic1{
+  float:left;
+  margin-left: 3%;
+  font-weight: bolder;
+  font-size: 20px;
+}
+.basic2{
+  float:left;
+  margin-left: 10%;
+  font-weight: bolder;
+  font-size: 20px;
+}
+.basic3{
+  float:left;
+  margin-left: 10%;
+  font-weight: bolder;
+  font-size: 20px;
+}
+.basic4{
+  float:left;
+  margin-left: 10%;
+  font-weight: bolder;
+  font-size: 20px;
+}
+.basic5{
+  float:left;
+  margin-left: 10%;
+  font-weight: bolder;
+  font-size: 20px;
+}
+
+.rank a{
+  border-style: none;
+  
+}
+/*플로팅*/
+#homeup {
+  margin-left: 15%;
+  display: block;
+  background-image: url(./images/arrow-up.png);
+  background-repeat: no-repeat;
+}
+
+#homeup:hover {
+  opacity: 0.4;
+}
+
+#homedown {
+  margin-left: 15%;
+  display: block;
+  width: 37px;
+  height: 30px;
+  background-image: url(./images/arrow-down.png);
+  background-repeat: no-repeat;
+}
+
+#homedown:hover {
+  opacity: 0.4;
+}
+
+
+.float_z {
+  z-index: -100000;
+}
+
+.float_lotte{
+  z-index: -100000;
+  margin-right: 0;
+  margin-left: -70%;
+  margin-top: 1%;
+  width: 40%;
+  height: 40%;
+}
+.remove_line{
+  z-index: -100000;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* 검색창 */
+
+.login_inner{
+
+  float: left;
+  background-color: #ed1c24;
+  width: 100%;
+  margin-top:-5%
+
+}
+.login_inner_box{
+  
+  margin-top:3%;
+  margin-bottom: 3%;
+  width: 50%;
+ 
+  margin-left: 35%;
+}
+input{
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-color: white;
+  background-color: #ed1c24;
+  width: 60%;
+ 
+
+}
+input::placeholder{
+  color:white;
+}
+
+.search-btn{
+  text-decoration: none;
+
+  color: #ffffff;
+  font-size: 250%;
+}
+
+
+
+/* footer */
+
+.ttile {
+  font-weight: bold;
+}
+
+a:link {
+  color: black;
+  text-decoration: none;
+}
+
+a:visited {
+  color: black;
+  text-decoration: none;
+}
+
+a:hover {
+  color: black;
+}
+
+
+/* card*/
+.card1{
+  float: left;
+  width: 310px;
+  height: 50%;
+  background: #f1f1f1;
+  position: absolute;
+  margin-top:20%;
+  left:18%;
+  transform: translate(-50%,-50%);
+
+  
+
+ 
+}
+.card2{
+  float: left;
+  width: 330px;
+  background: #f1f1f1;
+  position: absolute;
+  margin-top:-53%;
+  margin-left:180%;
+  transform: translate(-50%,-50%);
+  
+
+  
+
+ 
+}
+
+.card3{
+  float: left;
+  width: 310px;
+  height: 50%;
+  background: #f1f1f1;
+  position: absolute;
+  margin-top:-80%;
+  margin-left:180%;
+  transform: translate(-50%,-50%);
+
+  
+
+ 
+}
+
+
+
+
+
+.top-section{
+  height: 200px;
+  overflow:hidden;
+  background: #fff;
+  position: relative;
+
+}
+
+.card_nav{
+  text-align: center;
+  
+}
+
+.card_nav img{
+  width: 80px;
+  height: 50px;
+  border: 1px solid #ddd;
+  margin: 8px 2px;
+  cursor: pointer;
+  transition: 0.3s;
+
+}
+
+.card_nav img:hover{
+  border-color: #ed1c24;
+}
+
+.price{
+  position: absolute;
+  top: 20px;
+  right:20px;
+  color: #ffffff;
+  font-size: 24px;
+
+}
+
+.product-info{
+  
+  padding:24px;
+}
+
+.name{
+  text-transform: uppercase;
+  font-size: 24px;
+  color: rgb(0, 0, 0);
+}
+.dis{
+  font-size: 16px;
+  opacity: 0.7;
+}
+.btn{
+  display:block;
+  background: #ed1c24;
+  text-align: center;
+  color:#ffffff;
+  padding:10px;
+ 
+  transition: 0.3s;
+
+}
+
+.btn:hover{
+  background: rgb(0, 0, 0);
+  COLOR: WHITE;
+}
+
+
+/* 카트안에 좋아요 버튼 */
+.fa-heart{ font-size: x-large;}
+.likebt{  outline:0!important; margin-top: 5%;}
+.far{ color:gray;}
+.red{ color:red;}
+
+/* 상품보기 하이퍼링크 */
+.ho:hover{
+  color: #ed1c24;
+}

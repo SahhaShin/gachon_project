@@ -1,0 +1,112 @@
+/* Made with love by Mutiullah Samim*/
+
+@import url('https://fonts.googleapis.com/css?family=Numans');
+@font-face {
+  font-family: 'NanumBarunGothic';
+  font-style: normal;
+  font-weight: 400;
+  src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot');
+  src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype');
+ }
+
+ *{
+  font-family: "NanumBarunGothic", sans-serif;
+ }
+
+html,body{
+background-image: url('assets/img/로고.png');
+background-size: cover;
+background-repeat: no-repeat;
+height: 100%;
+font-family: 'Numans', sans-serif;
+
+}
+
+
+.logo{
+    margin-top: 3%;
+    width: 5%;
+    margin-left: 48%;
+    
+
+}
+.logo-shell{
+    width:100%;
+    align-content: center;
+}
+
+
+/* 로그인창 */
+
+
+
+.login_inner_font{
+    color: white; 
+    font-size: 30px; 
+    font-weight: bolder; 
+    margin-top: 20%;
+  }
+  .login_inner{
+    margin-top: 5%;
+    float: left;
+    background-color: #ed1c24;
+    width: 30%;
+    height:30em;
+    margin-left: 36%;
+    
+  
+  }
+  .login_inner_box{
+    
+    margin-top:10%;
+    width: 80%;
+   
+    margin-left: 25%;
+  }
+
+  input{
+    border-top: 0;
+    border-left: -5%;
+    border-right: 35%;
+    border-color: white;
+    background-color: #ed1c24;
+    width: 60%;
+
+   
+  
+  }
+  input::placeholder{
+    color:white;
+  }
+
+
+  /* 소셜 로그인 */
+
+    
+    .social_icon span{
+    font-size: 60px;
+    margin-left: 10px;
+    color: #FFC312;
+    }
+    
+    .social_icon span:hover{
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    }
+    
+    .social_icon{
+    position: absolute;
+    right: 34%;
+    top: 21%;
+    }
+  
+
+    /* 홈으로 돌아가기 */
+    .go_home{
+     
+      color: black;
+
+    }
+    .go_home:hover{
+      color: black;
+    }

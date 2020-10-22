@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- css 경로 가져오기-->
+    <link rel="stylesheet" href="{% static 'css/make_search.css' %}">
+
+    <title>롯데, 상품검색</title>
+
+    
+    <link rel="stylesheet" type="text/css" href="css/make_search.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!--Fontawesome CDN-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+
+    <!-- 카드안에 좋아요 버튼 -->
+
+    <script>
+        $(function () {
+            $("i").click(function () {
+                $(this).toggleClass("fas");
+                $(this).toggleClass("red");
+            })
+        });
+    </script>
+
+
+</head>
+
+<body>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+
+
+    <div class="container" style="visibility: hidden;">
+        안보이는부분/공간차지용<br>안보이는부분/공간차지용<br>안보이는부분/공간차지용<br>
+    </div>
+
+
+    <!-- 검색창 -->
+    <div class="login_inner">
+
+        <div class="login_inner_box">
+            <form>
+
+                <input type="text" placeholder="커스텀하고 싶은 상품을 검색해보세요." style="font-size: 15px;color: white;">
+                <a class="search-btn" href="#">
+                    <enter style="color: white;font-size: 60%;" class="fas fa-search"></enter>
+                </a>
+
+                <!-- 인기태그 -->
+
+                <h6 class="hash_txt" style="color: white; font-size: 15px; margin-left:-5%; font-weight: bold;">인기태그
+                    &nbsp;&nbsp; | &nbsp;&nbsp; <a style="color: white;" href="#">#생일선물</a> &nbsp; <a
+                        style="color: white;" href="#">#추석선물세트</a> &nbsp; <a style="color: white;" href="#">#이사집선물세트</a>
+                    &nbsp;&nbsp; |</h6>
+        </div>
+    </div>
+
+    </form>
+    </div>
+
+    </div>
+
+
+
+    <div class="container" style="visibility: hidden;">
+        안보이는부분/공간차지용<br>안보이는부분/공간차지용<br>안보이는부분/공간차지용<br>
+    </div>
+    <div class="container test">
+
+    </div>
+    <div class="container" style="visibility: hidden;">
+        안보이는부분/공간차지용<br>안보이는부분/공간차지용<br>안보이는부분/공간차지용<br>
+    </div>
+
+
+
+    <!-- 카드 1이 전체 카드를 감싸고 있음 -->
+    <div class="card1">
+        <div class="top-section">
+            <img style="width: 330px;height: 200px;" src="{% static 'img/prod1.png' %}">
+
+            <div class="price">{{"9650"}}원</div>
+        </div>
+
+        <div class="product-info">
+            <div class="name">퍼퓸 샴푸 컨디셔너</class>
+                <div class="dis">{{"#생필품"}} {{"#이삿집"}}</div>
+
+                <!-- 카드안에 하트: 찜하기 -->
+                <div class="like mb-2 mr-2" style="float: right;">
+                    <butt class="likebt" style="border: none;"><i class="far fa-heart"></i></butt>
+                </div>
+
+                <!--카드안에 구매버튼 -->
+                <a class="btn" href="#">제작하기</a>
+            </div>
+        </div>
+
+
+        <!-- 카드 2 -->
+        <div class="card2">
+            <div class="top-section">
+                <img style="width: 330px;height: 200px;" id="image-container2" src="{% static 'img/prod2.png' %}">
+
+
+                <div class="price">{{"9980원"}}</div>
+            </div>
+
+            <div class="product-info">
+                <div class="name">{{"머스크 메론"}}</class>
+                    <div class="dis">{{"#달콤한_과일"}} {{"#재철_과일"}}</div>
+
+                    <!-- 카드안에 하트: 찜하기 -->
+                    <div class="like mb-2 mr-2" style="float: right;">
+                        <butt class="likebt" style="border: none;"><i class="far fa-heart"></i></butt>
+                    </div>
+
+                    <!--카드안에 구매버튼 -->
+                    <a class="btn" href="#">제작하기</a>
+                </div>
+            </div>
+
+            <!-- 카드 3 -->
+            <div class="card3">
+                <div class="top-section">
+                    <img style="width: 330px;height: 200px;" id="image-container3" src="{% static 'img/prod3.png' %}">
+
+
+                    <div class="price">{{"5000원"}}</div>
+                </div>
+
+                <div class="product-info">
+                    <div class="name">{{"과일 큐브 치즈"}}</class>
+                        <div class="dis">{{"#재철_과일"}}</div>
+
+                        <!-- 카드안에 하트: 찜하기 -->
+                        <div class="like mb-2 mr-2" style="float: right;">
+                            <butt class="likebt" style="border: none;"><i class="far fa-heart"></i></butt>
+                        </div>
+
+                        <!--카드안에 구매버튼 -->
+                        <a class="btn" href="#">제작하기</a>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+            <!-- 카드 4 -->
+            <div class="card4">
+                <div class="top-section">
+                    <img style="width: 330px;height: 200px;" id="image-container3"
+                        src="{% static 'img/gift_set.jpg' %}">
+
+
+                    <div class="price">{{"15000"}}원</div>
+                </div>
+
+                <div class="product-info">
+                    <div class="name">{{"롯데 제과 종합 선물세트"}}</class>
+                        <div class="dis">{{"#MT"}} {{"#이삿집"}}</div>
+
+                        <!-- 카드안에 하트: 찜하기 -->
+                        <div class="like mb-2 mr-2" style="float: right;">
+                            <butt class="likebt" style="border: none;"><i class="far fa-heart"></i></butt>
+                        </div>
+
+                        <!--카드안에 구매버튼 -->
+                        <a class="btn" href="#">제작하기</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- 카드 5 -->
+            <div class="card5">
+                <div class="top-section">
+                    <img style="width: 330px;height: 200px;" id="image-container3" src="{% static 'img/prod4.png' %}">
+
+
+                    <div class="price">{{"39900"}}원</div>
+                </div>
+
+                <div class="product-info">
+                    <div class="name">{{"기모 맨투맨 5종 택1"}}</class>
+                        <div class="dis">{{"#생필품"}}</div>
+
+                        <!-- 카드안에 하트: 찜하기 -->
+                        <div class="like mb-2 mr-2" style="float: right;">
+                            <butt class="likebt" style="border: none;"><i class="far fa-heart"></i></butt>
+                        </div>
+
+                        <!--카드안에 구매버튼 -->
+                        <a class="btn" href="#">제작하기</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- 카드 6 -->
+            <div class="card6">
+                <div class="top-section">
+                    <img style="width: 330px;height: 220px;" id="image-container3"
+                        src="{% static 'img/gift_set1_2.png' %}">
+
+
+                    <div class="price">{{"80000"}}원</div>
+                </div>
+
+                <div class="product-info">
+                    <div class="name">{{"SK2 토너"}}</class>
+                        <div class="dis">{{"#생필품"}}</div>
+
+                        <!-- 카드안에 하트: 찜하기 -->
+                        <div class="like mb-2 mr-2" style="float: right;">
+                            <butt class="likebt" style="border: none;"><i class="far fa-heart"></i></butt>
+                        </div>
+
+                        <!--카드안에 구매버튼 -->
+                        <a class="btn" href="#">제작하기</a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+    </div>
+    <!-- 페이지네이션 -->
+    <nav aria-label="Page navigation example" style="margin-top: 120%; position: absolute;">
+        <ul class="pagination">
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+
+
+
+
+
+</body>
+
+
+</html>

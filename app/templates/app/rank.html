@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>롯데, 전체랭킹</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/rank.css' %}">
+    <!-- <link href="css/rank.css" rel="stylesheet" /> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../static/css/mypage.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+    <!--Fontawesome CDN-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+
+
+    <script>
+        var view = new Swiper('.view', {
+            spaceBetween: 15
+        });
+        var nav = new Swiper('.nav', {
+            spaceBetween: 30,
+            slidesPerView: 'auto',
+            touchRatio: 1,
+            centeredSlides: true,
+            slideToClickedSlide: true,
+            onSlideChangeEnd: function () {
+                $('.nav,.bottom,.view').removeClass('active');
+            }
+        });
+
+        $('.content').each(function () {
+            var t = $(this),
+                content = new Swiper(t, {
+                    scrollbar: t.find('.swiper-scrollbar'),
+                    direction: 'vertical',
+                    slidesPerView: 'auto',
+                    mousewheelControl: true,
+                    spaceBetween: 15,
+                    freeMode: true,
+                    grabCursor: true,
+                    onSliderMove: function (swiper) {
+                        if (swiper.activeIndex > 0) {
+                            $('.nav,.bottom,.view').addClass('active');
+                        } else {
+                            $('.nav,.bottom,.view').removeClass('active');
+                        }
+                    },
+                    onSlideChangeEnd: function (swiper) {
+                        if (swiper.activeIndex > 0) {
+                            $('.nav,.bottom,.view').addClass('active');
+                        } else {
+                            $('.nav,.bottom,.view').removeClass('active');
+                        }
+                    },
+                    onScroll: function (swiper) {
+                        if (swiper.activeIndex > 0) {
+                            $('.nav,.bottom,.view').addClass('active');
+                        } else {
+                            $('.nav,.bottom,.view').removeClass('active');
+                        }
+                    }
+                });
+        })
+
+        view.params.control = nav;
+        nav.params.control = view;
+    </script>
+
+
+    <!-- 카운트업 -->
+    <script>
+        $(function() {
+  var count0 = count1 = count2 = 0;
+
+  timeCounter();
+
+  function timeCounter() {
+
+    id0 = setInterval(count0Fn, 0.1);
+
+    function count0Fn() {
+      count0++;
+      if (count0 > 10000) {
+        clearInterval(id0);
+      } else {
+        $(".number").eq(0).text(count0);
+      }
+
+    }
+
+    id1 = setInterval(count1Fn, 0.1);
+
+    function count1Fn() {
+      count1++;
+      if (count1 > 10000) {
+        clearInterval(id1);
+      } else {
+        $(".number").eq(1).text(count1);
+      }
+    }
+
+    id2 = setInterval(count2Fn, 0.1);
+
+    function count2Fn() {
+      count2++;
+      if (count2 > 10000) {
+        clearInterval(id2);
+      } else {
+        $(".number").eq(2).text(count2);
+      }
+    }
+  }
+});
+    </script>
+    <!-- 카드안에 좋아요 버튼 -->
+
+    <script>
+        $(function () {
+            $("i").click(function () {
+                $(this).toggleClass("fas");
+                $(this).toggleClass("red");
+            })
+        });
+    </script>
+
+
+</head>
+
+<body>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+
+    <!-- navbar 시작 -->
+
+
+
+    <nav>
+        <div>
+            <a href="{% url 'home' %}">
+
+                <img id="top" style="margin-top: 3%;width: 6%;"
+                    src="https://blog.lotte.co.kr/wp-content/themes/lotte_v2/assets/images/ci.png">
+            </a>
+
+        </div>
+
+
+        <div>
+            <div class="menu">
+                <a href="{% url 'home' %}" class="on"><span>홈</span></a>
+                <a href="{% url 'search' %}"><span>상품보기</span></a>
+                <a href="{% url 'make' %}"><span>상품만들기</span></a>
+                <a href="{% url 'rank' %}"><span>랭킹</span></a>
+                
+
+                <!-- 로그인 안했을 때 -->
+                {%if check == '2'%}
+                    <a href="{% url 'login' %}"><span>{{name}}</span><span class="fas fa-user-circle col-peo"></span></a>
+                {%endif%}
+
+                <!-- 관리자로 로그인 -->
+                {%if check == '3'%}
+                    <a href="#"><span>{{name}}</span><span class="fas fa-user-circle col-peo"></span></a>
+                <!-- <a href="#"><span>로그아웃</span></a>  -->
+                {%endif%}
+
+                <!-- 일반유저로 로그인 -->
+                {%if check == '1'%}
+                    <a href="#"><span>{{name}}</span><span class="fas fa-user-circle col-peo"></span></a>
+                <!-- <a href="#"><span>로그아웃</span></a>  -->
+                {%endif%}
+
+                <span></span>
+            </div>
+        </div>
+
+    </nav>
+
+    <script>
+        $(document).ready(function () {
+            $('nav a').on('click', function () {
+                $(this).addClass('on');
+                $(this).siblings().removeClass('on');
+
+            });
+
+        });
+    </script>
+
+    <!-- navbar 끝 -->
+
+    <!-- 플로팅 메뉴 시작 -->
+    <table id="floating_menu float_z" style="position:fixed; z-index: 99999; margin:0%;">
+        <!-- 위로가기버튼 -->
+        <tr>
+            <td>
+                <a id="homeup" href="#top">
+                    <top style="font-size:150% ;" class="fas fa-sort-up"></top>
+                </a>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="2" style="text-align: center; z-index: -1000;">
+                <div style="border-radius: 15px; padding: 10px;">
+                    <!-- 롯데 온으로 가기 -->
+                    <div class="remove_line">
+                        <a href="https://www.lotteon.com/p/display/main/lotteon?mall_no=1"><img class="float_lotte"
+                                src="https://contents.lotteon.com/display/dshoplnk/13096/35/C000229/486/P0A7759E97EEB015030F5C6C80277F0F2D37597497B074297A62520BB4D4A49E9/file"></a>
+
+                    </div>
+
+
+
+
+
+                    <div>
+
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <!-- 아래로가기버튼 -->
+        <tr>
+            <td>
+                <a id="homedown" href="#footer">
+                    <down style="font-size:150%" class="fas fa-caret-down"></down>
+                </a>
+            </td>
+        </tr>
+    </table>
+
+    <!-- 플로팅 메뉴 끝 -->
+
+    <!-- 기본적으로는 for 문으로 구현할것
+    <div class="container ">
+        <div class="row">
+            <div class="col-3 test">
+                랭크 아이콘
+            </div>
+            <div class="col-3 test1">
+                아이디
+            </div>
+            <div class="col-3 test2">
+                좋아요 등
+                <button>좋아요 누르기</button>
+            </div>
+            <div class="col-3 test3">
+                <button>보러가기</button>
+            </div>
+        </div>
+    </div>-->
+
+
+
+
+    <!-- 랭크 안에 서치바 -->
+    <div class="container" style="visibility: hidden;">
+        안보이는부분/공간차지용<br>안보이는부분/공간차지용<br>안보이는부분/공간차지용<br>
+    </div>
+    <div class="container" style="visibility: hidden;">
+        안보이는부분/공간차지용<br>안보이는부분/공간차지용<br>안보이는부분/공간차지용<br>
+    </div>
+
+    <!-- 검색창 -->
+    <div class="login_inner">
+
+        <div class="login_inner_box">
+            <form>
+
+                <input type="text" placeholder="아이디 또는 태그로 검색해보세요." style="font-size: 20px;color: white;">
+                <a class="search-btn" href="#">
+                    <enter style="color: white;" class="fas fa-search"></enter>
+                </a>
+
+                <!-- 인기태그 -->
+
+                <h6 class="hash_txt" style="color: white; font-size: 20px; margin-left:-5%; font-weight: bold;">인기태그
+                    &nbsp;&nbsp; | &nbsp;&nbsp; <a style="color: white;" href="#">#생일선물</a> &nbsp; <a
+                        style="color: white;" href="#">#추석선물세트</a> &nbsp; <a style="color: white;" href="#">#이사집선물세트</a>
+                    &nbsp;&nbsp; |
+                </h6>
+            </form>
+
+        </div>
+    </div>
+
+
+
+    <!-- 랭크 시작 -->
+
+    <hr style="width:70%; margin-top:10%;">
+
+    <div>
+        <h3 style="font-weight: bolder; text-align: center;z-index:2000;margin-top: 5%;">#RANKING</h3>
+        <h4 style="font-weight: bolder; text-align: center;">Thank you, lotte members♡</h4>
+
+    </div>
+
+    <div class="sector1">
+        <h5 style="margin-left: 17%;">RANK</h5>
+        <h5 style="margin-left: 10%;">ID</h5>
+        <h5 style="margin-left: 10%;">등급</h5>
+        <h5 style="margin-left: 7.5%;">좋아요 / 판매 수</h5>
+        <h5 style="margin-left: 8%;">세트보러가기</h5>
+        
+
+    </div>
+    <div class="list-group rank">
+        <!-- 1등 -->
+        <rank class="bling">
+            <div class="basic1">
+                {{"1"}}
+            </div>
+            <div class="basic2">
+                {{"tksgk2598"}}
+            </div>
+            <div class="basic3">
+                <img style="width:30px;height:30px"  src="https://contents.lotteon.com/publish/member/202002/pc/ico-lotteon-grade-vvip.png">
+            </div>
+            <div class="basic4">
+                {{"10000"}}/{{"1250"}}
+            </div>
+            <div class="basic5">
+                <a href="{%url 'make' %}" class="ho">상품보기</a>
+            </div>
+            
+        </rank>
+
+
+
+        <!-- 2등 -->
+        <rank class="bling" style="margin-top: 1%;">
+            <div class="basic1">
+                {{"2"}}
+            </div>
+            <div class="basic2">
+                {{"tksgk2598"}}
+            </div>
+            <div class="basic3">
+                <img style="width:30px;height:30px"  src="https://contents.lotteon.com/publish/member/202002/pc/ico-lotteon-grade-vvip.png">
+            </div>
+            <div class="basic4">
+                {{"10000"}}/{{"1250"}}
+            </div>
+            <div class="basic5">
+                <a href="{%url 'make' %}" class="ho">상품보기</a>
+            </div>
+            
+        </rank>
+
+        <!-- 3등 -->
+        <rank class="bling" style="margin-top: 1%;">
+            <div class="basic1">
+                {{"3"}}
+            </div>
+            <div class="basic2">
+                {{"tksgk2598"}}
+            </div>
+            <div class="basic3">
+                <img style="width:30px;height:30px"  src="https://contents.lotteon.com/publish/member/202002/pc/ico-lotteon-grade-vvip.png">
+            </div>
+            <div class="basic4">
+                {{"10000"}}/{{"1250"}}
+            </div>
+            <div class="basic5">
+                <a href="{%url 'make' %}" class="ho">상품보기</a>
+            </div>
+            
+        </rank>
+
+        <!-- 4등 -->
+        <rank class="bling" style="margin-top: 1%;">
+            <div class="basic1">
+                {{"4"}}
+            </div>
+            <div class="basic2">
+                {{"tksgk2598"}}
+            </div>
+            <div class="basic3">
+                <img style="width:30px;height:30px"  src="https://contents.lotteon.com/publish/member/202002/pc/ico-lotteon-grade-vip.png">
+            </div>
+            <div class="basic4">
+                {{"10000"}}/{{"1250"}}
+            </div>
+            <div class="basic5">
+                <a href="{%url 'make' %}" class="ho">상품보기</a>
+            </div>
+            
+        </rank>
+
+
+
+        <!-- 5등 -->
+        <rank class="bling" style="margin-top: 1%;">
+            <div class="basic1">
+                {{"5"}}
+            </div>
+            <div class="basic2">
+                {{"tksgk2598"}}
+            </div>
+            <div class="basic3">
+                <img style="width:30px;height:30px"  src="https://contents.lotteon.com/publish/member/202002/pc/ico-lotteon-grade-vip.png">
+            </div>
+            <div class="basic4">
+                {{"10000"}}/{{"1250"}}
+            </div>
+            <div class="basic5">
+                <a href="{%url 'make' %}" class="ho">상품보기</a>
+            </div>
+            
+        </rank>
+
+        <!-- 6등 -->
+        <rank class="bling" style="margin-top: 1%;">
+            <div class="basic1">
+                {{"6"}}
+            </div>
+            <div class="basic2">
+                {{"tksgk2598"}}
+            </div>
+            <div class="basic3">
+                <img style="width:30px;height:30px"  src="https://contents.lotteon.com/publish/member/202002/pc/ico-lotteon-grade-gold.png">
+            </div>
+            <div class="basic4">
+                {{"10000"}}/{{"1250"}}
+            </div>
+            <div class="basic5">
+                <a href="{%url 'make' %}" class="ho">상품보기</a>
+            </div>
+            
+        </rank>
+
+        <!-- 7등 -->
+        <rank class="bling" style="margin-top: 1%;">
+            <div class="basic1">
+                {{"7"}}
+            </div>
+            <div class="basic2">
+                {{"tksgk2598"}}
+            </div>
+            <div class="basic3">
+                <img style="width:30px;height:30px"  src="https://contents.lotteon.com/publish/member/202002/pc/ico-lotteon-grade-gold.png">
+            </div>
+            <div class="basic4">
+                {{"10000"}}/{{"1250"}}
+            </div>
+            <div class="basic5">
+                <a href="{%url 'make' %}" class="ho">상품보기</a>
+            </div>
+            
+        </rank>
+
+
+
+        <!-- 8등 -->
+        <rank class="bling" style="margin-top: 1%;">
+            <div class="basic1">
+                {{"8"}}
+            </div>
+            <div class="basic2">
+                {{"tksgk2598"}}
+            </div>
+            <div class="basic3">
+                <img style="width:30px;height:30px"  src="https://contents.lotteon.com/publish/member/202002/pc/ico-lotteon-grade-ace.png">
+            </div>
+            <div class="basic4">
+                {{"10000"}}/{{"1250"}}
+            </div>
+            <div class="basic5">
+                <a href="{%url 'make' %}" class="ho">상품보기</a>
+            </div>
+            
+        </rank>
+
+        <!-- 9등 -->
+        <rank class="bling" style="margin-top: 1%;">
+            <div class="basic1">
+                {{"9"}}
+            </div>
+            <div class="basic2">
+                {{"tksgk2598"}}
+            </div>
+            <div class="basic3">
+                <img style="width:30px;height:30px"  src="https://contents.lotteon.com/publish/member/202002/pc/ico-lotteon-grade-ace.png">
+            </div>
+            <div class="basic4">
+                {{"10000"}}/{{"1250"}}
+            </div>
+            <div class="basic5">
+                <a href="{%url 'make' %}" class="ho">상품보기</a>
+            </div>
+            
+        </rank>
+
+
+
+        
+    </div>
+    <hr style="width:70%; margin-top:10%;">
+
+
+
+
+    <!-- footer -->
+
+    <footer id="footer" class="container py-5" style="float: left; margin-left: 5%; margin-top: 10%">
+        <hr style="width: 100%;margin-left: 0%;">
+        <div class="row">
+            <div class="col-12 col-md">
+                <img src="https://blog.lotte.co.kr/wp-content/themes/lotte_v2/assets/images/ci.png"
+                    style="width: 30px;height: 30px;">
+                <small class="d-block mb-3 text-muted">&copy; 1967~2020</small>
+            </div>
+            <div class="col-6 col-md">
+                <h5>Social Media</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted font_size" href="https://www.facebook.com/lotte">
+                            <face class="fab fa-facebook-square"></face>
+                        </a></li>
+                    <li><a class="text-muted font_size" href="https://www.youtube.com/user/LOTTELIVE">
+                            <tube class="fab fa-youtube"></tube>
+                        </a></li>
+                    <li><a class="text-muted font_size" href="http://blog.lotte.co.kr/">BLOG</a></li>
+
+                </ul>
+            </div>
+            <div class="col-6 col-md">
+                <h5>COMPANY</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted font_size"
+                            href="https://www.lotteon.com/p/display/main/ellotte?mall_no=2">롯데백화점</a></li>
+                    <li><a class="text-muted font_size"
+                            href="https://www.lotteon.com/p/display/main/ellotte?mall_no=3">롯데마트</a></li>
+                    <li><a class="text-muted font_size"
+                            href="https://www.lotteon.com/p/display/main/ellotte?mall_no=4">롭스</a></li>
+                    <li><a class="text-muted font_size"
+                            href="https://www.lotteon.com/p/display/main/ellotte?mall_no=5">토이저러스</a></li>
+                    <li><a class="text-muted font_size"
+                            href="https://www.lotteon.com/p/display/main/ellotte?mall_no=6">롯데프레시</a></li>
+                    <li><a class="text-muted font_size"
+                            href="https://www.lotteon.com/p/display/main/ellotte?mall_no=7">롯데면세점</a></li>
+                    <li><a class="text-muted font_size"
+                            href="https://www.lotteon.com/p/display/main/ellotte?mall_no=8">롯데홈쇼핑</a></li>
+                    <li><a class="text-muted font_size"
+                            href="https://www.lotteon.com/p/display/main/ellotte?mall_no=9">롯데하이마트</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md">
+                <h5>Resources</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted font_size" href="#">Business</a></li>
+                    <li><a class="text-muted font_size" href="#">Education</a></li>
+                    <li><a class="text-muted font_size" href="#">Government</a></li>
+                    <li><a class="text-muted font_size" href="#">Gaming</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md">
+                <h5>About</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted font_size" href="#">Team</a></li>
+                    <li><a class="text-muted font_size" href="#">Locations</a></li>
+                    <li><a class="text-muted font_size" href="#">Privacy</a></li>
+                    <li><a class="text-muted font_size" href="#">Terms</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+
+
+
+
+</body>
+
+</html>

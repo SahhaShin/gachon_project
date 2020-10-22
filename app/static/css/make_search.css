@@ -1,0 +1,721 @@
+@font-face {
+    font-family: 'NanumBarunGothic';
+    font-style: normal;
+    font-weight: 400;
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot');
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype');
+   }
+
+  
+   *{
+    font-family: "NanumBarunGothic", sans-serif;
+   }
+   button:visited{
+     background-color: #a6aa9c !important;
+   }
+  
+  .active-pink-2 input.form-control[type=text]:focus:not([readonly]) {
+      border-bottom: 1px solid #f48fb1;
+      box-shadow: 0 1px 0 0 #f48fb1;
+    }
+    .active-pink input.form-control[type=text] {
+      border-bottom: 1px solid #f48fb1;
+      box-shadow: 0 1px 0 0 #f48fb1;
+    }
+    .active-purple-2 input.form-control[type=text]:focus:not([readonly]) {
+      border-bottom: 1px solid #ce93d8;
+      box-shadow: 0 1px 0 0 #ce93d8;
+    }
+    .active-purple input.form-control[type=text] {
+      border-bottom: 1px solid #ce93d8;
+      box-shadow: 0 1px 0 0 #ce93d8;
+    }
+    .active-cyan-2 input.form-control[type=text]:focus:not([readonly]) {
+      border-bottom: 1px solid #4dd0e1;
+      box-shadow: 0 1px 0 0 #4dd0e1;
+    }
+    .active-cyan input.form-control[type=text] {
+      border-bottom: 1px solid #4dd0e1;
+      box-shadow: 0 1px 0 0 #4dd0e1;
+    }
+    .active-cyan .fa, .active-cyan-2 .fa {
+      color: #4dd0e1;
+    }
+    .active-purple .fa, .active-purple-2 .fa {
+      color: #ce93d8;
+    }
+    .active-pink .fa, .active-pink-2 .fa {
+      color: #f48fb1;
+    }
+   
+  
+  
+  
+  
+    /* 산하추가- nav에 씀 */
+  .col-peo{
+    color: black;
+    font-size: 150%;
+    
+  }
+  
+  
+  nav div div a img{
+    width: 25%;
+    
+  }
+  .menu{
+    margin-top: 0%;
+    
+  }
+  
+  div .menu{
+    margin-top:10%;
+    
+  }
+  nav{
+    /* 메뉴고정 해제 */
+    /* position: fixed;  */
+    left: 0; top: 0%; 
+    width: 100%; 
+  
+    background-color: #ffffff;
+    z-index: 999;
+  
+  }
+  nav div{
+    display: flex; 
+    position: relative;
+    width: 1200px; 
+    margin: 0 auto;
+  
+  }
+  nav div a{
+    flex: 1;
+    display: block;
+    bottom: 5%;
+    height: 50px;
+    line-height: 40px;
+    text-align:center;
+    color: #000;
+  }
+  
+  nav div a:hover {
+    text-decoration: none;
+    color: #000;
+  }
+  
+  nav div a.on{
+    color: #ed1c24;
+  }
+  
+  nav div > span{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100px;
+    height: 3px;
+    background-color: #ed1c24;
+    opacity:0;
+    transition: all .5s;
+  
+  }
+  
+  
+  nav div a:nth-child(1).on ~ span {left :70px; opacity:1;}
+  nav div a:nth-child(2).on ~ span {left :310px; opacity:1;}
+  nav div a:nth-child(3).on ~ span {left :550px; opacity:1;}
+  nav div a:nth-child(4).on ~ span {left :790px; opacity:1;}
+  nav div a:nth-child(5).on ~ span {left :1030px; opacity:1;}
+  
+  
+  /* 검색창 */
+  /* 회원가입 본문 - 로그인과같음 */
+  
+  .login_inner{
+  
+    float: left;
+    background-color: #ed1c24;
+    width: 100%;
+    margin-top:-5%
+  
+  }
+  .login_inner_box{
+    
+    margin-top:3%;
+    margin-bottom: 3%;
+    width: 50%;
+   
+    margin-left: 35%;
+  }
+  input{
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-color: white;
+    background-color: #ed1c24;
+    width: 60%;
+   
+  
+  }
+  input::placeholder{
+    color:white;
+  }
+  
+  .search-btn{
+    text-decoration: none;
+  
+    color: #ffffff;
+    font-size: 250%;
+  }
+  /* RMx */
+  
+  
+  
+  
+  
+  /* .search-box{
+    padding: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    height: 7%;
+    background-color: #fff;
+    border: 1px solid #51e3d4;
+    border-radius: 30px;
+    transition: 0.4s;
+    width:50%;
+  }
+  
+  .search-btn{
+    text-decoration: none;
+    float: right;
+    width: 30px;
+    height: 30px;
+    background-color: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #51e3d4;
+  }
+  .search-btn:hover{
+    text-decoration: none;
+    color: #51e3d4;
+  }
+  
+  .search-txt{
+    border: none;
+    outline: none;
+    float: left;
+    font-size: 1rem;
+    line-height: 30px;
+    width:90%;
+   
+  } */
+  
+  
+  /* 태그설정 */
+  ul{
+    padding: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  ul li{
+    list-style: none;
+    float: left;
+  }
+  ul li .btn{
+    margin: 10px;
+    display: inline-block;
+    width: 75px;
+    height: 75px;
+    position: relative;
+    background-color: #ecf2f9;
+    border-radius: 10%;
+    color: #a6aa9c;
+    text-align: center;
+    overflow: hidden;
+  }
+  ul li .btn:before{
+    content: '';
+    width: 150%;
+    height: 150%;
+    background-color: #fb7777;
+    transform: rotate(45deg);
+    position: absolute;
+    top: 65%;
+    left: -115%;
+    transition: .5s
+  }
+  ul li .btn:hover:before{
+    top: -25%;
+    left: -25%;
+  }
+  ul li .btn i{
+    line-height: 75px;
+    font-size: 25px;
+    transition: .3s
+  }
+  ul li .btn:hover i{
+    transform: scale(1.3);
+    color: #fff;
+  }
+  
+  
+  /* 해시태그 */
+  .bs-example{
+    margin: 20px;
+  }
+  .accordion .fa{
+    margin-right: 0.5rem;
+  }
+  .hash_btn{
+    margin-top: 3%;
+    margin-left: 25%;
+    border: none;
+    
+   
+  }
+  .hash_txt{
+    text-decoration: none;
+    margin-top: 3%;
+    margin-right: 0%;
+  
+  
+  }
+  
+  
+  .td_line td button{
+    width: 100%;
+    /* background-color:  #ec9292; */
+    color: white;
+    
+  }
+  
+  
+  
+  /* 해시태그에 선택 버튼 */
+  
+  
+  .far2{background-color:  #ec9292;}
+  .red2{ 
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color:red;
+    
+  }
+  
+  
+  /* card*/
+  .card1{
+    float: left;
+    width: 330px;
+    background: #f1f1f1;
+    position: absolute;
+    margin-top:15%;
+    left:18%;
+    transform: translate(-50%,-50%);
+  
+    
+  
+   
+  }
+  .card2{
+    float: left;
+    width: 330px;
+    background: #f1f1f1;
+    position: absolute;
+    margin-top:-53%;
+    margin-left:180%;
+    transform: translate(-50%,-50%);
+  
+    
+  
+   
+  }
+  
+  .card3{
+    float: left;
+    width: 330px;
+    background: #f1f1f1;
+    position: absolute;
+    margin-top:-53%;
+    margin-left:180%;
+    transform: translate(-50%,-50%);
+  
+    
+  
+   
+  }
+  .card4{
+    float: left;
+    width: 330px;
+    background: #f1f1f1;
+    position: absolute;
+    margin-top:70%;
+    margin-left:180%;
+    transform: translate(-50%,-50%);
+  
+    
+  
+   
+  }
+  .card5{
+    float: left;
+    width: 330px;
+    background: #f1f1f1;
+    position: absolute;
+    margin-top:70%;
+    margin-left:50%;
+    transform: translate(-50%,-50%);
+  
+    
+  
+   
+  }
+  .card6{
+    float: left;
+    width: 330px;
+    background: #f1f1f1;
+    position: absolute;
+    margin-top:70%;
+    margin-left:-80%;
+    transform: translate(-50%,-50%);
+  
+    
+  
+   
+  }
+  
+  
+  
+  
+  .top-section{
+    height: 200px;
+    overflow:hidden;
+    background: #fff;
+    position: relative;
+  
+  }
+  
+  .card_nav{
+    text-align: center;
+    
+  }
+  
+  .card_nav img{
+    width: 80px;
+    height: 50px;
+    border: 1px solid #ddd;
+    margin: 8px 2px;
+    cursor: pointer;
+    transition: 0.3s;
+  
+  }
+  
+  .card_nav img:hover{
+    border-color: #ed1c24;
+  }
+  
+  .price{
+    position: absolute;
+    top: 20px;
+    right:20px;
+    color: #ffffff;
+    font-size: 24px;
+  
+  }
+  
+  .product-info{
+    padding:24px;
+  }
+  
+  .name{
+    text-transform: uppercase;
+    font-size: 24px;
+    color: rgb(0, 0, 0);
+  }
+  .dis{
+    font-size: 16px;
+    opacity: 0.7;
+  }
+  .btn{
+    display:block;
+    background: #ed1c24;
+    text-align: center;
+    color:#ffffff;
+    padding:10px;
+   
+    transition: 0.3s;
+  
+  }
+  
+  .btn:hover{
+    background: rgb(0, 0, 0);
+    COLOR: WHITE;
+  }
+
+  @media(min-width:560px){
+    .card1{
+        float: left;
+        width: 280px;
+        background: #f1f1f1;
+        position: absolute;
+        margin-top:15%;
+        left:18%;
+        transform: translate(-50%,-50%);
+      
+        
+      
+       
+      }
+      .card2{
+        float: left;
+        width: 280px;
+        background: #f1f1f1;
+        position: absolute;
+        margin-top:-58%;
+        margin-left:160%;
+        transform: translate(-50%,-50%);
+      
+        
+      
+       
+      }
+      
+      .card3{
+        float: left;
+        width: 280px;
+        background: #f1f1f1;
+        position: absolute;
+        margin-top:-58%;
+        margin-left:160%;
+        transform: translate(-50%,-50%);
+      
+        
+      
+       
+      }
+      .card4{
+        float: left;
+        width: 280px;
+        background: #f1f1f1;
+        position: absolute;
+        margin-top:70%;
+        margin-left:160%;
+        transform: translate(-50%,-50%);
+      
+        
+      
+       
+      }
+      .card5{
+        float: left;
+        width: 280px;
+        background: #f1f1f1;
+        position: absolute;
+        margin-top:70%;
+        margin-left:50%;
+        transform: translate(-50%,-50%);
+      
+        
+      
+       
+      }
+      .card6{
+        float: left;
+        width: 280px;
+        background: #f1f1f1;
+        position: absolute;
+        margin-top:70%;
+        margin-left:-60%;
+        transform: translate(-50%,-50%);
+      
+        
+      
+       
+      }
+      
+      
+      
+      
+      .top-section{
+        height: 200px;
+        overflow:hidden;
+        background: #fff;
+        position: relative;
+      
+      }
+      
+      .card_nav{
+        text-align: center;
+        
+      }
+      
+      .card_nav img{
+        width: 80px;
+        height: 50px;
+        border: 1px solid #ddd;
+        margin: 8px 2px;
+        cursor: pointer;
+        transition: 0.3s;
+      
+      }
+      
+      .card_nav img:hover{
+        border-color: #ed1c24;
+      }
+      
+      .price{
+        position: absolute;
+        top: 15px;
+        right:15px;
+        color: #ffffff;
+        font-size: 20px;
+        background-color: rgb(231, 179, 179);
+      
+      }
+      
+      .product-info{
+        padding:20px;
+      }
+      
+      .name{
+        text-transform: uppercase;
+        font-size: 20px;
+        color: rgb(0, 0, 0);
+      }
+      .dis{
+        font-size: 13px;
+        opacity: 0.7;
+      }
+      .btn{
+        display:block;
+        background: #ed1c24;
+        text-align: center;
+        color:#ffffff;
+        padding:10px;
+       
+        transition: 0.3s;
+      
+      }
+      
+      .btn:hover{
+        background: rgb(0, 0, 0);
+        COLOR: WHITE;
+      }
+  }
+  
+  
+  /* 카트안에 좋아요 버튼 */
+  .fa-heart{ font-size: x-large;}
+  .likebt{  outline:0!important; margin-top: 5%;}
+  .far{ color:gray;}
+  .red{ 
+    color: red;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+   
+    
+  }
+  
+  
+  
+  /* footer */
+  
+  .ttile {
+    font-weight: bold;
+  }
+  
+  a:link {
+    color: black;
+    text-decoration: none;
+  }
+  
+  a:visited {
+    color: black;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    color: black;
+  }
+  .bot1{
+    margin-top: 15%;
+    margin-left: -35%;
+    
+  }
+  .bot2{
+    margin-top: 40%;
+    margin-left: -20%;
+    
+  }
+  
+  .bot3{
+    margin-top: 20%;
+    margin-left: -23%;
+  
+  }
+  .bot4{
+    margin-top: 20%;
+    margin-left: -29%;
+  
+  }
+  
+  
+  
+  
+  
+  /*플로팅*/
+  #homeup {
+    margin-left: 15%;
+    display: block;
+    background-image: url(./images/arrow-up.png);
+    background-repeat: no-repeat;
+  }
+  
+  #homeup:hover {
+    opacity: 0.4;
+  }
+  
+  #homedown {
+    margin-left: 15%;
+    display: block;
+    width: 37px;
+    height: 30px;
+    background-image: url(./images/arrow-down.png);
+    background-repeat: no-repeat;
+  }
+  
+  #homedown:hover {
+    opacity: 0.4;
+  }
+  
+  
+  .float_z {
+    z-index: -100000;
+  }
+  
+  .float_lotte{
+    z-index: -100000;
+    margin-right: 0;
+    margin-left: -70%;
+    margin-top: 1%;
+    width: 40%;
+    height: 40%;
+  }
+  .remove_line{
+    z-index: -100000;
+    margin: 0;
+    padding: 0;
+  }
+
+

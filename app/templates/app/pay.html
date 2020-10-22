@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
+    <title>결제창</title>
+    <style>
+        hr {
+            background-color: #ed1c24;
+        }
+
+        table {
+            border: 1px solid #ed1c24;
+            border-collapse: collapse;
+          }
+
+        th, td {
+        border: 1px solid #ed1c24;
+        }
+
+        .boldtxt {
+            font-size:medium;
+            font-weight: 100;
+        }
+
+        .btn {
+            width: 250px;
+            height: 50px;
+            border-radius: 10px;
+            border-color: #ed1c24;
+            font-size: 20px;
+            color: #ffffff;
+            background-color: #ed1c24;
+            border:0;
+            outline:0;
+        }
+
+    </style>
+</head>
+<body>
+    <script>
+        $(document).ready(function(){
+            $("#payBtn").click(function(){
+                $("#div2").css("display", "block");
+                $("#div1").css("display", "none");
+            });
+        });
+
+        $(document).ready(function(){
+            $("#ok").click(function(){
+                self.close();
+            });
+        });
+    </script>
+    <div class="p-3" id="div1">
+        <div class="boldtxt" style="text-align: right;">안전하고 편리한 이니시스결제입니다.</div>
+        <hr>
+        <div class="boldtxt" style="text-align: left;">이용약관</div>
+        &nbsp;&nbsp;<input type="checkbox" checked> 전체동의
+        <hr>
+        <div class="boldtxt" style="text-align: left;">전자금융거래 이용약관</div>
+        <div style="text-align: left;">개인정보의 수집 및 이용안내&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" checked>  동의</div>
+        <div style="text-align: left;">개인정보의 제공 및 위탁안내&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" checked>  동의</div>
+        <hr>
+        <table class="table table-bordered" style="border: 1px solid #ed1c24;">
+            <tbody>
+              <tr>
+                <td colspan="4">카카오페이</td>
+              </tr>
+              <tr>
+                <td colspan="4">SSGPAY</td>
+              </tr>
+              <tr>
+                <td>PAYCO</td>
+                <td>L.pay</td>
+                <td>KPAY</td>
+                <td>samsungPay</td>
+              </tr>
+              <tr>
+                <td colspan="2">현대카드</td>
+                <td colspan="2">삼성카드</td>
+              </tr>
+              <tr>
+                <td>비씨카드</td>
+                <td>KB국민</td>
+                <td>신한카드</td>
+                <td>롯데카드</td>
+              </tr>
+              <tr>
+                <td>NH농협</td>
+                <td>하나카드</td>
+                <td>씨티카드</td>
+                <td>UnionPay</td>
+              </tr>
+              <tr>
+                <td>그외카드</td>
+              </tr>
+            </tbody>
+        </table>
+        <div style="text-align: center;">
+            <button id="payBtn"class="btn">결제하기</button>
+        </div>
+    </div>
+    <div id="div2" style="text-align: center; display:none;">
+        <div style="font-size: 40px; margin-top:150px;">결제가 완료되었습니다.</div>
+        <button class="btn m-3" id="ok">결제하기</button>
+    </div>
+</body>
+</html>

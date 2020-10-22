@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>롯데 상품을 커스텀해보자!</title>
+    <!-- <link href="./css/opening.css" rel="stylesheet" /> -->
+    <link rel="stylesheet" href="{% static 'css/opening.css' %}">
+
+</head>
+
+<body>
+
+    <!-- 로고 -->
+    <div>
+        <a href="{% url 'home' %}">
+            <img style="position: absolute;margin-top: 3%;width: 5%; margin-left: 48%; z-index: 1000;"
+                src="https://blog.lotte.co.kr/wp-content/themes/lotte_v2/assets/images/ci.png">
+        </a>
+
+    </div>
+    <div style="position: absolute;color: white; margin-top: 10%;margin-left: 43%;">
+        Your Lifetime Friend, LOTTE
+    </div>
+
+
+    <!-- 배경 -->
+    <img style="position: absolute; width: 100%; height: 100%; z-index: -10;" src="{% static 'img/lotte_back.png' %}">
+    
+    
+    
+
+    
+
+    
+
+
+    <!-- 글자 변경 -->
+
+    <div class="animated-text">
+        <div class="line">Welcome to LOTTE</div>
+        <div class="line">Let's play</div>
+        <div class="line">Customize Gift Set</div>
+        <div class="line">myself!</div>
+
+    </div>
+
+    <div class="let_home" >
+        <a href="{% url 'home' %}" style="text-decoration: none; color:white;">홈페이지로 이동</a>
+    </div>
+
+    
+
+</body>
+
+</html>

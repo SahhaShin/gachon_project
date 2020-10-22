@@ -1,0 +1,197 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<!DOCTYPE html>
+<html>
+{% load static %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+	integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<!-- 스위트 테스트 링크 위 -->
+
+<style>
+	body,
+	html {
+		margin: 0;
+		padding: 0;
+		height: 100%;
+
+	}
+
+	.user_card {
+		width: 350px;
+		margin-top: auto;
+		margin-bottom: auto;
+		background: #45558D;
+		/*#45558D;*/
+		position: relative;
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		padding: 10px;
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+		-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+		-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+		border-radius: 5px;
+
+	}
+
+	.form_container {
+		margin-top: 20px;
+	}
+
+	#form-title {
+		color: #fff;
+		font-size: 2rem;
+	}
+
+
+	
+
+	.login_btn:focus {
+		box-shadow: none;
+		outline: 0px;
+	}
+
+	.login_container {
+		padding: 0 2rem;
+	}
+
+	/*.input-group-text {
+			background: #ffffff7a;
+			color: rgb(209, 203, 124);
+			border: 0;
+			border-radius: 0.25rem 0 0 0.25rem;
+		}*/
+	.input_user,
+	.input_pass:focus {
+		box-shadow: none;
+		outline: 0px;
+	}
+
+	#messages {
+		background-color: grey;
+		color: #fff;
+		padding: 10px;
+		margin-top: 10px;
+	}
+</style>
+
+<head>
+	<title>롯데, 로그인</title>
+	<!--Made with love by Mutiullah Samim -->
+
+	<!--Bootsrap 4 CDN-->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+	<!--Fontawesome CDN-->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+		integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+	<!--Custom styles-->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+</head>
+
+<body>
+
+	<!-- 로고 -->
+	<div class="logo-shell">
+		<a href="{%url 'home' %}">
+			<img class="logo" src="https://blog.lotte.co.kr/wp-content/themes/lotte_v2/assets/images/ci.png">
+		</a>
+
+	</div>
+
+
+	<!-- 로그인 -->
+	<div>
+		<div>
+
+			<div class="d-flex justify-content-end social_icon">
+				<span><i class="fab fa-facebook-square" title="페이스북으로 로그인"></i></span>
+				<span><i class="fab fa-google-plus-square"></i></span>
+				<span><i class="fab fa-twitter-square"></i></span>
+			</div>
+		</div>
+
+
+
+		<div class="login_inner">
+
+			<div class="login_inner_font">
+
+				<center>LOTTE</center>
+
+
+			</div>
+
+
+			<div class="login_inner_box">
+				<form method="POST" action="">
+					{% csrf_token %}
+					<div class="input-group mb-3">
+
+						<input style="background-color: #ed1c24; margin-left: -5%; margin-right: 35%; color: white;border-top: none;border-left: none;border-right: none;" type="text" name="username" placeholder="ID" class="form-control">
+					</div>
+					<div class="input-group mb-2">
+
+						<input style="background-color: #ed1c24; margin-left: -5%; margin-right: 35%; color: white;border-top: none;border-left: none;border-right: none;" type="password" name="password" placeholder="PASSWORD" class="form-control">
+					</div>
+					<input type="checkbox" style="width: 5%;margin-left:-5%;">
+					<co style="color: white;">ID저장</co>
+					<div class="d-flex justify-content-center mt-3 login_container">
+						<input class="btn login_btn" style="margin-left: -50%; border: black;width: 80%;height:2rem;border-radius: 10rem; background-color: white; color:black" type="submit" value="로그인">
+					</div>
+				</form>
+
+			</div>
+			{%for message in messages%}
+			{{message}}
+			{%endfor%}
+
+
+			<div class="mt-4">
+				<div class="d-flex justify-content-center links" style="color: white;">
+					계정이 없으신가요? <a style="color: white;" href="{% url 'register' %}" class="ml-2">회원가입</a>
+				</div>
+
+			</div>
+		</div>
+
+
+
+	</div>
+
+	<br style="position: relative;">
+	<div>
+		<hr style="position: relative; border-style: solid; margin-top: 40%; width: 50%;">
+
+		<h6 style="text-align: center;"><a href="{%url 'home' %}" class="go_home">홈으로 돌아가기</a></h6>
+
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

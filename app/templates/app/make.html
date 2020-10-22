@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+{% load static %} 
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제작 부분 구현</title>
+    <link rel="stylesheet" type="text/css" href="css/make.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <link rel="stylesheet" href="{% static 'css/make.css' %}">
+    
+    
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <!--Fontawesome CDN-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script language="javascript">
+            function showPopup() { window.open("search.html", "a", "width=1000px, height=700px, left=500, top=100"); }
+            function allowDrop(ev){
+                ev.preventDefault();
+            }
+            function drag(ev){
+                ev.dataTransfer.setData("text",ev.target.id);
+            }
+            function drop(ev){
+                ev.preventDefault();
+                var data = ev.dataTransfer.getData("text");
+                ev.target.appendChild(document.getElementById(data));
+            }
+            $(document).ready(function () {
+                $(".pozang>img").each(function () {
+                    $(this).click(function () {
+                        $(this).addClass("selected");                      //클릭된 부분을 상단에 정의된 CCS인 selected클래스로 적용
+                        $(this).siblings().removeClass("selected");  //siblings:형제요소들,    removeClass:선택된 클래스의 특성을 없앰
+                    });
+                });
+                
+                
+
+                   
+            });
+           
+            
+            
+
+            
+        </script>
+
+        <script>
+            function test(num){
+                    if(num=='1')
+                    document.getElementById("step2").click();
+                    if(num=='2')
+                    document.getElementById("step3").click();
+                    if(num=='-1')
+                    document.getElementById("step1").click();
+                    if(num=='-2')
+                    document.getElementById("step2").click();
+            
+            }
+
+        </script>
+    
+</head>
+
+<body>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    
+     <!-- navbar 시작 -->
+     <nav>
+        <div>
+            <a href="{% url 'home' %}">
+
+                <img id="top" style="margin-top: 3%;width: 6%;"
+                    src="https://blog.lotte.co.kr/wp-content/themes/lotte_v2/assets/images/ci.png">
+            </a>
+
+        </div>
+
+
+        <div>
+            <div class="menu">
+                <a href="{% url 'home' %}" class="on"><span>홈</span></a>
+                <a href="{% url 'search' %}"><span>상품보기</span></a>
+                <a href="{% url 'make' %}"><span>상품만들기</span></a>
+                <a href="{% url 'rank' %}"><span>랭킹</span></a>
+                
+
+                <!-- 로그인 안했을 때 -->
+                {%if check == '2'%}
+                    <a href="{% url 'login' %}"><span>{{name}}</span><span class="fas fa-user-circle col-peo"></span></a>
+                {%endif%}
+
+                <!-- 관리자로 로그인 -->
+                {%if check == '3'%}
+                    <a href="#"><span>{{name}}</span><span class="fas fa-user-circle col-peo"></span></a>
+                <!-- <a href="#"><span>로그아웃</span></a>  -->
+                {%endif%}
+
+                <!-- 일반유저로 로그인 -->
+                {%if check == '1'%}
+                    <a href="{%url 'rank'  %}"><span>{{name}}</span><span class="fas fa-user-circle col-peo"></span></a>
+                <!-- <a href="#"><span>로그아웃</span></a>  -->
+                {%endif%}
+
+                <a href="{% url 'rank' %}"><span>로그아웃</span></a>
+                <span></span>
+            </div>
+        </div>
+
+    </nav>
+
+    <script>
+        $(document).ready(function () {
+            $('nav a').on('click', function () {
+                $(this).addClass('on');
+                $(this).siblings().removeClass('on');
+
+            });
+
+        });
+    </script>
+
+    <!-- navbar 끝 -->
+
+    <!-- 플로팅 메뉴 시작 -->
+    <table id="floating_menu float_z" style="position:fixed; z-index: 99999; margin:0%;">
+        <!-- 위로가기버튼 -->
+        <tr>
+            <td>
+                <a id="homeup" href="#top"><top style="font-size:150% ;color:black" class="fas fa-sort-up"></top></a>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="2" style="text-align: center; z-index: -1000;">
+                <div style="border-radius: 15px; padding: 10px;">
+                    <!-- 롯데 온으로 가기 -->
+                    <div class="remove_line">
+                        <a href="https://www.lotteon.com/p/display/main/lotteon?mall_no=1"><img class="float_lotte" src="https://contents.lotteon.com/display/dshoplnk/13096/35/C000229/486/P0A7759E97EEB015030F5C6C80277F0F2D37597497B074297A62520BB4D4A49E9/file"></a>
+                        
+                    </div>
+
+                    <!-- 롯데 백화점으로 가기 -->
+                    <!-- <div class="remove_line">
+                        <a href="https://www.lotteon.com/p/display/main/ellotte?mall_no=2"><img class="float_lotte" src="https://contents.lotteon.com/display/dshoplnk/13096/35/C000229/487/PC9B8D41A26131DF35177223C161EB5D837FB6AFDB859B1D1D35678386B53C2CA/file"></a>
+                        
+                    </div> -->
+
+                    <!-- 롯데 마트로 가기 -->
+                    <!-- <div class="remove_line">
+                        <a href="https://www.lotteon.com/p/display/main/ellotte?mall_no=3"><img class="float_lotte" src="https://contents.lotteon.com/display/dshoplnk/13096/35/C000229/488/P38A9CA50ECA3DD85E78A5587B20663C321F2BE29D79091D3DCF4317BE028F49D/file"></a>
+                        
+                    </div> -->
+
+                    <!-- 롭스로 가기 -->
+                    <!-- <div class="remove_line">
+                        <a href="https://www.lotteon.com/p/display/main/ellotte?mall_no=4"><img class="float_lotte" src="https://contents.lotteon.com/display/dshoplnk/13096/35/C000229/489/P426647A9381D41504ABC2E25FF84E900CF15165A20F4317500946DF10A3A9751/file"></a>
+                        
+                    </div> -->
+
+                    <!-- 토이저러스로 가기 -->
+                    <!-- <div class="remove_line">
+                        <a href="https://www.lotteon.com/p/display/main/ellotte?mall_no=5"><img class="float_lotte" src="https://contents.lotteon.com/display/dshoplnk/13096/35/C000229/20088/P389D750F4D22E62452D8DA1B46A8551F89CB87EE9A6F15C1212E4F00DA81A229/file"></a>
+                        
+                    </div> -->
+
+                    <!-- 롯데프레쉬로 가기 -->
+                    <!-- <div class="remove_line">
+                        <a href="https://www.lotteon.com/p/display/main/ellotte?mall_no=6"><img class="float_lotte" src="https://contents.lotteon.com/display/dshoplnk/13096/35/C000236/4289/P8A0D3D2E6B755FDEEA2FF650943EF4BC4E4DA6E857DEF34A6D56357092BE9068/file"></a>
+                        
+                    </div> -->
+                    
+                    <!-- 롯데면세점으로 가기 -->
+                    <!-- <div class="remove_line">
+                        <a href="https://www.lotteon.com/p/display/main/ellotte?mall_no=7"><img class="float_lotte" src="https://contents.lotteon.com/display/dshoplnk/13096/35/C000236/2216/PA39A33FF41DB12AF313AEDAB849844D4959623DE0A8FAE352C8233FEEBDC6780/file"></a>
+                        
+                    </div> -->
+
+                    <!-- 롯데홈쇼핑으로 가기 -->
+                    <!-- <div class="remove_line">
+                        <a href="https://www.lotteon.com/p/display/main/ellotte?mall_no=8"><img class="float_lotte" src="https://contents.lotteon.com/display/dshoplnk/13096/35/C000230/484/PD84550FE9D50EAF4728A0A0B1225E208A8C7E0AB66AF3B8D26026911BBD5660C/file"></a>
+                        
+                    </div> -->
+
+                    <!-- 롯데하이마트로 가기 -->
+                    <!-- <div class="remove_line">
+                        <a href="https://www.lotteon.com/p/display/main/ellotte?mall_no=9"><img class="float_lotte" src="https://contents.lotteon.com/display/dshoplnk/13096/35/C000230/485/PB81D5F1443BCAEEC153BDE6B3C93506E0842B8B039243EB3CC916D8FD14516C2/file"></a>
+                        
+                    </div> -->
+
+
+
+                    <div>
+                    <!-- Talk Talk Banner Script start -->
+                    <!-- <script type="text/javascript" src="https://partner.talk.naver.com/banners/script"></script>
+                    <div class="talk_banner_div" data-id="87285" style=" margin-top: 20%;"></div> -->
+                    <!-- Talk Talk Banner Script end -->
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <!-- 아래로가기버튼 -->
+        <tr>
+            <td>
+                <a id="homedown" href="#footer"><down style="font-size:150% ; color:black" class="fas fa-caret-down"></down></a>
+            </td>
+        </tr>
+    </table>
+
+    <!-- 플로팅 메뉴 끝 -->
+
+    <!-- <div class="container" style="visibility: hidden;">
+        안보이는부분/공간차지용<br>안보이는부분/공간차지용<br>안보이는부분/공간차지용<br>
+    </div>
+    <div class="container" style="visibility: hidden;">
+        안보이는부분/공간차지용<br>안보이는부분/공간차지용<br>안보이는부분/공간차지용<br>
+    </div> -->
+
+
+    <div class="container-fluid">
+        <div class="col-md-12 product-info ">
+            <ul id="myTab" class="nav nav-tabs nav_tabs d-flex justify-content-end">
+
+                <li class="active"><a href="#service-one" data-toggle="tab" id="step1">step1</a></li>
+                <li><a href="#service-two" data-toggle="tab" id="step2">step2</a></li>
+                <li><a href="#service-three" data-toggle="tab" id="step3">step3</a></li>
+
+            </ul>
+            <div id="myTabContent" class="tab-content">
+                <div class="container">
+
+                </div>
+                <div class="tab-pane fade in active" id="service-one">
+                    <div class="container">
+                        <br>
+                        <form>
+                            <div class="form-group">
+                                <p class= "ml-4 pl-2"><input id = "setName" placeholder="세트 이름" style="font-size:15px; "></p>
+                            </div>
+                        <div class="row d-flex justify-content-center">
+                            <div class="container test col-8 " id = "div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <h5 style="font-weight: bold;">상품 선택(찜 목록에서 드래그)</h5>
+        
+                            </div>
+                            
+                            <div class="container test1 col-3">
+                                <h5 style="font-weight: bold;">현재의 가격정보</h5>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <button class="next-button" type="button" onclick="test('1')">Next step</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="service-two">
+                    <div class="container">
+                        
+                        <div class="row d-flex justify-content-center pt-5">
+                            
+                            <div class="container test col-8 ">
+                                <h5 style="font-weight: bold;">포장박스 선택</h5>
+                                <div class="pozang">
+                                    <img src = "http://127.0.0.1:8000/static/img/pozangBox.png" id = "pozang1" style="width:200px;height:200px;" class = "mb-2">
+                                    <img src = "http://127.0.0.1:8000/static/img/pozangBox2.png" id = "pozang2" style="width:200px;height:200px;" class = "mb-2">
+                                    <img src = "http://127.0.0.1:8000/static/img/pozangBox3.png" id = "pozang3" style="width:200px;height:200px" class = "mb-2">
+                                    <img src = "http://127.0.0.1:8000/static/img/pozangBox4.png" id = "pozang4" style="width:200px;height:200px">
+                                    <img src = "http://127.0.0.1:8000/static/img/pozangBox5.png" id = "pozang5" style="width:200px;height:200px">
+                                    <img src = "http://127.0.0.1:8000/static/img/pozangBox6.png" id = "pozang6" style="width:200px;height:200px">
+                                </div>
+                                
+                               
+
+                            </div>
+                            <div class="container test1 col-3">
+                                <h5 style="font-weight: bold;">현재의 가격정보</h5>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <button onclick="test('-1')">이전 단계로</button>
+                                <button class="tab-button" type="button" onclick="test('2')">Next step</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="service-three">
+                    <div class="container">
+                        <br>
+                        <div class="row d-flex justify-content-center">
+                            <div class="container test col-8 ">
+                                <h5 style="font-weight: bold;">나만의 문구 삽입</h5>
+                                <p><input placeholder="Ex) 즐거운 한가위^*^" style="width: 300px;font-size:15px;"></p>
+                                
+                                    
+                            </div>
+                            <div class="container test1 col-3">
+                                <h5 style="font-weight: bold;">현재의 가격정보</h5>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <button onclick="test('-2')">이전 단계로</button>
+                                <button>결제</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="container">
+                <h4>찜 목록</h4><br>
+                <img id ="drag1" src = "http://127.0.0.1:8000/static/img/lotte_back.png" style="width: 100px;height:100px" draggable="true" ondragstart="drag(event)">
+                <img id ="drag2" src = "http://127.0.0.1:8000/static/img/lotte_back.png" style="width: 100px;height:100px" draggable="true" ondragstart="drag(event)">
+                <img id ="drag3" src = "http://127.0.0.1:8000/static/img/lotte_back.png" style="width: 100px;height:100px" draggable="true" ondragstart="drag(event)">
+                <img id ="drag4" src = "http://127.0.0.1:8000/static/img/lotte_back.png" style="width: 100px;height:100px" draggable="true" ondragstart="drag(event)">
+            </div>
+            <br>
+            <div class="container d-flex justify-content-end test1 m-0 p-0">
+                        
+                        <button onclick="showPopup();">추가검색/search 로 연결해서 가져오기/search는 다른사람이 구현함/이상하면 따로 구현할것</button>
+            </div>
+            
+                    
+                
+            
+        </div>
+    </div>
+   
+    <!-- footer -->
+
+<footer id="footer" class="container py-5 asd" style="float: left; margin-left: 5%; margin-top: 50%">
+    <hr style="width: 100%;margin-left: 0%;">
+    <div class="row">
+        <div class="col-12 col-md">
+            <img src="https://blog.lotte.co.kr/wp-content/themes/lotte_v2/assets/images/ci.png" style="width: 30px;height: 30px;">
+            <small class="d-block mb-3 text-muted">&copy; 1967~2020</small>
+        </div>
+        <div class="col-6 col-md">
+            <h5 class="hh">Social Media</h5>
+            <ul class="list-unstyled text-small">
+                <li><a class="text-muted font_size" href="https://www.facebook.com/lotte"><face class="fab fa-facebook-square"></face></a></li>
+                <li><a class="text-muted font_size" href="https://www.youtube.com/user/LOTTELIVE"><tube class="fab fa-youtube"></tube></a></li>
+                <li><a class="text-muted font_size" href="http://blog.lotte.co.kr/">BLOG</a></li>
+               
+            </ul>
+        </div>
+        <div class="col-6 col-md">
+            <h5 class="hh">COMPANY</h5>
+            <ul class="list-unstyled text-small">
+                <li><a class="text-muted font_size" href="https://www.lotteon.com/p/display/main/ellotte?mall_no=2">롯데백화점</a></li>
+                <li><a class="text-muted font_size" href="https://www.lotteon.com/p/display/main/ellotte?mall_no=3">롯데마트</a></li>
+                <li><a class="text-muted font_size" href="https://www.lotteon.com/p/display/main/ellotte?mall_no=4">롭스</a></li>
+                <li><a class="text-muted font_size" href="https://www.lotteon.com/p/display/main/ellotte?mall_no=5">토이저러스</a></li>
+                <li><a class="text-muted font_size" href="https://www.lotteon.com/p/display/main/ellotte?mall_no=6">롯데프레시</a></li>
+                <li><a class="text-muted font_size" href="https://www.lotteon.com/p/display/main/ellotte?mall_no=7">롯데면세점</a></li>
+                <li><a class="text-muted font_size" href="https://www.lotteon.com/p/display/main/ellotte?mall_no=8">롯데홈쇼핑</a></li>
+                <li><a class="text-muted font_size" href="https://www.lotteon.com/p/display/main/ellotte?mall_no=9">롯데하이마트</a></li>
+            </ul>
+        </div>
+        <div class="col-6 col-md">
+            <h5 class="hh">Resources</h5>
+            <ul class="list-unstyled text-small">
+                <li><a class="text-muted font_size" href="#">Business</a></li>
+                <li><a class="text-muted font_size" href="#">Education</a></li>
+                <li><a class="text-muted font_size" href="#">Government</a></li>
+                <li><a class="text-muted font_size" href="#">Gaming</a></li>
+            </ul>
+        </div>
+        <div class="col-6 col-md">
+            <h5 class="hh">About</h5>
+            <ul class="list-unstyled text-small">
+                <li><a class="text-muted font_size" href="#">Team</a></li>
+                <li><a class="text-muted font_size" href="#">Locations</a></li>
+                <li><a class="text-muted font_size" href="#">Privacy</a></li>
+                <li><a class="text-muted font_size" href="#">Terms</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+
+</body>
+
+</html>

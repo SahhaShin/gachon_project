@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!-- 이거 꼭 넣어주기!! -->
+{% load static %} 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- css 경로 가져오기-->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <h1>연습 페이지</h1>
+    <!-- 이미지 경로 가져오기 -->
+    <img src="{% static 'img/son.jpg' %}">
+
+    <div>
+        <!-- 다른 html로 이동하기 -->
+        <a href="{% url 'home' %}">
+            <img style="position: absolute;margin-top: 3%;width: 5%; margin-left: 48%; z-index: 1000;"
+                src="https://blog.lotte.co.kr/wp-content/themes/lotte_v2/assets/images/ci.png">
+        </a>
+
+    </div>
+
+    <body>
+        <form action="/make", method="get">
+            <input type="text" name="message"/>
+            <input type="submit" value="Submit"/>
+        </form>
+    </body>
+</body>
+</html>

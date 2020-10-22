@@ -1,0 +1,416 @@
+html, body{
+  /* overflow-y:hidden; */
+  overflow-x:hidden;
+  height: 100vh;
+}
+.myclass1{
+  width: 1000px;
+}
+.dis{
+    display: flex;
+}
+.frameset{
+    width: 100%;
+    height: 100vh;
+    border: 0;
+}
+
+a:link {
+  color: black;
+  text-decoration: none;
+}
+
+a:visited {
+  color: black;
+  text-decoration: none;
+}
+
+a:hover {
+  color: black;
+}
+
+button:focus { outline:none!important;}
+
+/* mypage */
+.mainUser{
+  border-style: solid;
+  border-radius: 10px;
+  border-color: #ed1c24;
+}
+.mainUserImg{
+  width: 50px;
+  height: 50px;
+  margin: 35px auto;
+  border-radius: 50%;
+  border-style: solid;
+}
+
+/* mypage_rank */
+.rank{
+  width: 60px; 
+  height: 60px;
+  border-radius: 50%;
+  background-color: thistle;
+}
+
+.rankTxt{
+  font-size: 20px;
+}
+
+table{
+  border-spacing: 5px;
+  vertical-align: middle;
+  margin: 0 30px;
+}
+tr{
+  vertical-align: middle;
+}
+.rank_btn{
+  border: 1px solid white;
+  border-radius: 5px;
+  width: 50px;
+  height: 30px;
+  margin-right: 10px;
+  background-color: #ed1c24;
+  color: white;
+}
+.myrank_list{
+  margin: 10px 0;
+}
+.scale {
+  transform: scale(1);
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  position: relative;
+  transition: all 0.3s ease-in-out;   /* 부드러운 모션을 위해 추가*/
+}
+.scale:hover {
+  transform: scale(2.0);
+  -webkit-transform: scale(2.0);
+  -moz-transform: scale(2.0);
+  -ms-transform: scale(2.0);
+  -o-transform: scale(2.0);
+  z-index: 1;
+}
+
+/* mypage_cart */
+
+.cartSum{
+  border: 5px solid gainsboro;
+  padding: 30px 20px;
+  margin: 30px 50px;
+  text-align: center;
+}
+
+.cartbtn1{
+  border: 2px solid #ed1c24;
+  border-radius: 5px;
+  background-color: white;
+  width: 250px;
+  padding: 20px 20px;
+  margin: 5px 5px;
+  text-align: center;
+}
+
+.cartbtn2{
+  border: 2px solid #ed1c24;
+  border-radius: 5px;
+  background-color:  #ed1c24;
+  width: 250px;
+  padding: 20px 20px;
+  margin: 5px 5px;
+  text-align: center;
+  color: white;
+}
+
+.cartbtn{
+  display: flex;
+  justify-content: center;
+}
+
+.plus, .minus{
+  border: 2px solid #ed1c24;
+  background-color: white;
+}
+
+.cart_delete_btn{
+  border: 1px solid white;
+  border-radius: 5px;
+  width: 50px;
+  height: 30px;
+  margin-right: 10px;
+  background-color: #ed1c24;
+  color: white;
+}
+
+.all_cart_delete_btn{
+  border: 1px solid #ed1c24;
+  border-radius: 5px;
+  width: 50px;
+  height: 30px;
+  margin-right: 10px;
+  background-color: white;
+}
+
+/* mypage_history */
+
+.date{
+  border: 1px solid gainsboro;
+  margin: 10px 50px;
+  padding: 10px;
+  height: 80px;
+  background-color: gainsboro;
+  justify-content: center;
+}
+
+.historyBtn1{
+  border: 2px solid #ed1c24;
+  border-radius: 5px;
+  background-color: white;
+  width: 120px;
+  padding: 0 10px;
+  margin: 5px;
+  text-align: center;
+}
+
+.historyNameTxt{
+  font-size: 15px;
+  font-weight: bold;
+}
+
+/* mypage_save */
+.savebtn1{
+  border: 2px solid #ed1c24;
+  border-radius: 5px;
+  background-color: white;
+  width: 250px;
+  padding: 20px 20px;
+  margin: 5px 5px;
+  text-align: center;
+}
+
+.savebtn2{
+  border: 2px solid #ed1c24;
+  border-radius: 5px;
+  background-color:  #ed1c24;
+  width: 250px;
+  padding: 20px 20px;
+  margin: 5px 5px;
+  text-align: center;
+  color: white;
+}
+
+.savebtn{
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+/* mypage_modify */
+.form-group{
+  width: max-content;
+}
+
+/* 하트 버튼 */
+.fa-heart{ font-size: x-large;}
+.likebt{  outline:0!important; margin-top: 5%; margin-right: 18px;}
+#heart{ color:red;}
+.gray{ color:gray;}
+
+
+/* 산하추가- nav에 씀 */
+.col-peo{
+  color: black;
+  font-size: 150%;
+  
+}
+
+
+nav div div a img{
+  width: 25%;
+  
+}
+.menu{
+  margin-top: 0%;
+  
+}
+
+div .menu{
+  margin-top:10%;
+  
+}
+nav{
+  /* 메뉴고정 해제 */
+  /* position: fixed;  */
+  left: 0; top: 0%; 
+  width: 100%; 
+
+  background-color: #ffffff;
+  z-index: 999;
+
+}
+nav div{
+  display: flex; 
+  position: relative;
+  width: 1200px; 
+  margin: 0 auto;
+
+}
+nav div a{
+  flex: 1;
+  display: block;
+  bottom: 5%;
+  height: 50px;
+  line-height: 40px;
+  text-align:center;
+  color: #000;
+}
+
+nav div a:hover {
+  text-decoration: none;
+  color: #000;
+}
+
+nav div a.on{
+  color: #ed1c24;
+}
+
+nav div > span{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100px;
+  height: 3px;
+  background-color: #ed1c24;
+  opacity:0;
+  transition: all .5s;
+
+}
+
+
+nav div a:nth-child(1).on ~ span {left :70px; opacity:1;}
+nav div a:nth-child(2).on ~ span {left :310px; opacity:1;}
+nav div a:nth-child(3).on ~ span {left :550px; opacity:1;}
+nav div a:nth-child(4).on ~ span {left :790px; opacity:1;}
+nav div a:nth-child(5).on ~ span {left :1030px; opacity:1;}
+
+/* 랭크 */
+
+@-webkit-keyframes sparkle {
+  from {
+    background-position: 0% 100%;
+  }
+  to {
+    background-position: 200% 100%;
+  }
+}
+
+@keyframes sparkle {
+  from {
+    background-position: 0% 100%;
+  }
+  to {
+    background-position: 200% 100%;
+  }
+}
+.bling {
+  background: white;
+  display: inline-block;
+  padding: 1em;
+  
+  border-radius: 4px;
+  position: relative;
+  text-align: center;
+  font-weight:bolder;
+}
+.bling:before {
+  -webkit-animation: sparkle 4s infinite linear;
+          animation: sparkle 4s infinite linear;
+  background: -webkit-gradient(linear, left top, right top, from(#7FEFBD), color-stop(11%, #FFF689), color-stop(22%, #EC0B43), color-stop(33%, #7FEFBD), color-stop(44%, #FFF689), color-stop(55%, #EC0B43), color-stop(66%, #7FEFBD), color-stop(77%, #FFF689), color-stop(88%, #EC0B43), to(#7FEFBD));
+  background: linear-gradient(90deg, #7FEFBD 0%, #FFF689 11%, #EC0B43 22%, #7FEFBD 33%, #FFF689 44%, #EC0B43 55%, #7FEFBD 66%, #FFF689 77%, #EC0B43 88%, #7FEFBD 100%);
+  background-size: 300% 100%;
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  -webkit-filter: blur(3px);
+          filter: blur(3px);
+  z-index: -1;
+  -webkit-transform: scale(0.99) translateY(3px);
+          transform: scale(0.99) translateY(3px);
+}
+.rank{
+  margin-top: 6%;
+  width: 70%;
+  margin-left: 15%;
+  
+  
+}
+.sector1{
+  margin-top:3%;
+
+}
+.sector1 h5{
+  font-weight: bolder;
+  z-index:2000;
+  float:left;
+  
+
+}
+.basic1{
+  float:left;
+  margin-left: 5%;
+  font-weight: bolder;
+  font-size: 20px;
+}
+.basic2{
+  float:left;
+  margin-left: 10%;
+  font-weight: bolder;
+  font-size: 20px;
+}
+.basic3{
+  float:left;
+  margin-left: 13%;
+  font-weight: bolder;
+  font-size: 20px;
+}
+.basic4{
+  float:left;
+  margin-left: 12%;
+  font-weight: bolder;
+  font-size: 20px;
+}
+.basic5{
+  float:left;
+  margin-left: 10%;
+  font-weight: bolder;
+  font-size: 20px;
+}
+.basic6{
+  float:left;
+  margin-left: 13%;
+  font-weight: bolder;
+  font-size: 20px;
+}
+
+.rank a{
+  border-style: none;
+  
+}
+
+
+/* 그래프 */
+canvas {
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  width: 800px;
+}

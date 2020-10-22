@@ -1,0 +1,133 @@
+@font-face {
+  font-family: 'NanumBarunGothic';
+  font-style: normal;
+  font-weight: 400;
+  src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot');
+  src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype');
+ }
+
+ *{
+  font-family: "NanumBarunGothic", sans-serif;
+ }
+.divider-text {
+    position: relative;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.divider-text span {
+    padding: 7px;
+    font-size: 12px;
+    position: relative;   
+    z-index: 2;
+}
+.divider-text:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+    top: 55%;
+    left: 0;
+    z-index: 1;
+}
+
+.btn-facebook {
+    background-color: #405D9D;
+    color: #fff;
+}
+.btn-twitter {
+    background-color: #42AEEC;
+    color: #fff;
+}
+.btn-google {
+    background-color: #85322d;
+    color: #fff;
+}
+
+
+/* 로고 */
+.logo{
+    margin-top: 3%;
+    width: 5%;
+    margin-left: 48%;
+    
+
+}
+.logo-shell{
+    width:100%;
+    align-content: center;
+}
+
+/* 회원가입 본문 - 로그인과같음 */
+.login_inner_font{
+    color: white; 
+    font-size: 30px; 
+    font-weight: bolder; 
+    margin-top: 20%;
+  }
+  .login_inner{
+    margin-top: 5%;
+    float: left;
+    background-color: #ed1c24;
+    width: 40%;
+    height:55em;
+    margin-left: 30%;
+    
+  
+  }
+  .login_inner_box{
+    
+    margin-top:10%;
+    width: 80%;
+   
+    margin-left: 25%;
+  }
+  input{
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-color: white;
+    background-color: #ed1c24;
+    width: 60%;
+   
+  
+  }
+  input::placeholder{
+    color:white;
+  }
+
+
+  /* 소셜 로그인 */
+
+    
+    .social_icon span{
+    font-size: 60px;
+    margin-left: 10px;
+    color: #FFC312;
+    }
+    
+    .social_icon span:hover{
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    }
+    
+    .social_icon{
+    position: absolute;
+    right: 30%;
+    top: 28%;
+    }
+
+    /* 로그인 */
+    .go_home{
+     
+        color: black;
+  
+      }
+      .go_home:hover{
+        color: black;
+      }
+
+
+
+
+      

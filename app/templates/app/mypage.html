@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+{% load static %} 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마이페이지</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/mypage.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'css/style.css' %}"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
+    <!-- 차트 링크 --> <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+</head>
+
+<body>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    
+    <!-- navbar -->
+    <nav>
+        <div>
+            <a href="{% url 'home' %}">
+
+                <img id="top" style="margin-top: 3%;width: 6%;" src="https://blog.lotte.co.kr/wp-content/themes/lotte_v2/assets/images/ci.png">
+            </a>
+
+        </div>
+
+        <div>
+            <div class="menu">
+                <a href="{% url 'home' %}"><span>홈</span></a>
+                <a href="{% url 'search' %}"><span>상품보기</span></a>
+                <a href="{% url 'make' %}"><span>상품만들기</span></a>
+                <a href="{% url 'rank' %}"><span>랭킹</span></a>
+                <a href="#"  class="on"><span class="fas fa-user-circle col-peo"></span></a>
+                <span></span>
+            </div>
+        </div>
+
+    </nav>
+
+    <script>
+        $(document).ready(function () {
+            $('nav a').on('click', function () {
+                $(this).addClass('on');
+                $(this).siblings().removeClass('on');
+            });
+        });
+    </script>
+    <!-- navbar -->
+
+    <div class="container" style="visibility: hidden;">
+        안보이는부분/공간차지용<br>안보이는부분/공간차지용<br>안보이는부분/공간차지용<br>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-1 mainUser" style="height: 200px;"> 
+                <div class="mainUserImg">
+                    <i class="fas fa-user fa-2x p-3 mb-3"></i> 
+                    <p style="text-align: center;">{{customer.name}}님</p>
+                </div>
+                <div class="mainUserInfo">
+                    <p style="text-align: center;">{{customer.rank}}등<br>
+                    {{customer.point}}L.POINT</p>
+                </div>
+            </div>
+            <div class="container-fluid col-11">
+                <div class="col-md-12 product-info">
+                    <ul id="myTab" class="nav nav-tabs nav_tabs d-flex justify-content-end">
+
+                        <li class="active"><a href="#rank" data-toggle="tab">내랭킹</a></li>
+                        <li><a href="#cart" data-toggle="tab">장바구니</a></li>
+                        <li><a href="#history" data-toggle="tab">구매내역</a></li>
+                        <li><a href="#save" data-toggle="tab">찜</a></li>
+                        <li><a href="#modify" data-toggle="tab">수정</a></li>
+                    </ul>
+                    <div id="myTabContent" class="tab-content">
+                        <div class="container" style="visibility: hidden;">
+                            안보이는부분/공간차지용<br>
+                        </div>
+                        <div class="tab-pane fade in active" id="rank">
+                            <!-- mypage_rank 시작 -->
+                            <script>
+                                // 실적보기 버튼 누르면 그래프 보이게
+                                function doShow() { 
+                                    if ($('#rankgraph').is(":visible")) { 
+                                        $('#rankgraph').hide(); 
+                                    } else { 
+                                        $('#rankgraph').show();
+                                    } 
+                                } 
+                            </script>
+                                <br>
+                            <div>
+                                <div class="sector1">
+                                    <h5 style="margin-left: 18%;">RANK</h5>
+                                    <h5 style="margin-left: 8%;">등급</h5>
+                                    <h5 style="margin-left: 10%;">좋아요 / 판매 수</h5>
+                                    <h5 style="margin-left: 7%;">세트보러가기</h5>
+                                    <h5 style="margin-left: 8%;">실적보기</h5>
+                                </div>
+                                <div class="list-group rank">
+                                    <div class="bling">
+                                        <div class="basic1">
+                                            {{customer.rank}}
+                                        </div>
+                                        <div class="basic3">
+                                            <i style="color: gold;" class="fas fa-crown"></i>
+                                            {{customer.grade}}
+                                        </div>
+                                        <div class="basic4">
+                                            {{set.like}}/{{set.sales}}
+                                        </div>
+                                        <div class="basic5">
+                                            <a href="{% url 'make' %}" class="ho" target="_parent">상품보기</a>
+                                        </div>
+                                        <div class="basic6">
+                                            <a class="graphBtn" onclick="doShow();"><i class="fas fa-chart-line fa-2x"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            <br>
+                            <!-- 차트 공간 -->
+                            <canvas id="rankgraph" width="400" height="200" style="width:400px;height:300px;text-align:center;display:none;margin-left:280px;"></canvas>
+                            <!-- 차트 --> 
+                            <script> 
+                                var rankgraph = document.getElementById('rankgraph').getContext('2d');
+                                var chart = new Chart(rankgraph, { 
+                                    // 챠트 종류를 선택
+                                    type: 'line', 
+                                    // 챠트를 그릴 데이타 
+                                    data: { labels: ['1주차', '2주차', '3주차', '4주차'], 
+                                    datasets: [{ label: '지난 4주간의 누적 판매수', backgroundColor: 'transparent', borderColor: 'red', data: [200, 400, 800, 1000] }] }, 
+                                    // 옵션 
+                                    options: {
+                                        responsive: false,
+                                        scales: {
+                                            yAxes: [{
+                                                ticks: {
+                                                    min: 0
+                                                }
+                                            }]
+                                        }
+                                    } }); 
+                            </script>
+                            </div>
+                            <!-- mypage_rank 끝 -->
+                        </div>
+                        <div class="tab-pane fade" id="cart">    
+                            <!-- mypage_cart 시작 -->
+                            <script type="text/javascript">
+                                // 삭제 버튼       
+                                function deleteBtn(){
+                                    if (confirm("삭제하시겠습니까?")) {
+                                        //삭제하기
+                                    } else {
+                                        //취소
+                                    }
+                                }       
+                        
+                                // 체크박스 체크시 금액 나오게
+                                var price=0;
+                                var checks=0;
+                                function check(box){
+                                    
+                                    if(box.checked == true){     
+                                        $(".delivery").text("2500원");
+                                        checks++;
+                                        price = price + Number($(box).val());
+                                        $( '.price_sum' ).text(price+"원");
+                                        $( '.price_sum2' ).text(price+2500+"원");
+                                    }
+                        
+                                    if(box.checked == false){
+                                        checks--;
+                                        price = price - Number($(box).val());
+                                        $( '.price_sum' ).text(price+"원");
+                                        $( '.price_sum2' ).text(price+2500+"원");
+                                        if(checks==0){
+                                            $(".delivery").text("0원");
+                                            $( '.price_sum2' ).text("0원");
+                                        }
+                                    }
+                                }
+                        
+                                // 체크박스 전체선택, 전체해제
+                                function checkAll(){
+                                    if( $("#check_all").is(':checked') ){
+                                    $("input[name=allcheck]").prop("checked", true);
+                                    $("input[name=allcheck]:checked").each(function() {
+                                        price = price + Number($(this).val());
+                                        $(".delivery").text("2500원");
+                                        $( '.price_sum' ).text(price+"원");
+                                        $( '.price_sum2' ).text(price+2500+"원");
+                                    });
+                                    price=0;
+                                    }else{
+                                    $("input[name=allcheck]").prop("checked", false);
+                                    $(".delivery").text("0원");
+                                    $( '.price_sum' ).text("0원");
+                                    $( '.price_sum2' ).text("0원");
+                                    price=0;
+                                    }
+                                }
+                        
+                                // +, - 누르면 수량 변화
+                                function plus(num) {
+                                   var count = Number(document.getElementById("cart_count"+num).value);
+                                   document.getElementById("cart_count"+num).value = count+1;
+                                   var price = Number(document.getElementById("cart_hidden_price"+num).value);
+                                   document.getElementById("sum"+num).innerText = price*(count+1)+"원";
+                                   //test(price*(count+1));
+                                }
+                                function minus(num) {
+                                    var count = Number(document.getElementById("cart_count"+num).value);
+                                    if(count >1 ){
+                                        document.getElementById("cart_count"+num).value = count-1;
+                                        var price = Number(document.getElementById("cart_hidden_price"+num).value);
+                                        document.getElementById("sum"+num).innerText = price*(count-1)+"원";
+                                    }
+                                 }
+                            </script>
+                            <br>
+                            <div class="cart_list">
+                                <div class="row" style="border: solid 1px gainsboro; margin: 0 50px; display: flex; align-items: center;">
+                                    <div class="col-2 p-1 pl-3" style="text-align:left;">
+                                        <input type="checkbox" id="check_all" onclick="checkAll();">&nbsp;&nbsp;&nbsp;&nbsp;전체선택
+                                    </div>
+                                    <div class="col-3 p-1">
+                                        <div><p class="pt-3">선물세트 이름</p></div>
+                                    </div>
+                                    <div class="col-2 p-1">
+                                        <div></div>
+                                    </div>
+                                    <div class="col-2 p-1" style=" text-align:right;">
+                                        <div>수량</div>
+                                    </div>
+                                    <div class="col-2 p-1" style=" text-align:center;">
+                                        <div>금액</div>
+                                    </div>
+                                    <div class="col-1 p-1" style=" text-align:right;">
+                                        <button class="all_cart_delete_btn" onclick="deleteBtn();">삭제</button>
+                                    </div>
+                                </div>
+                                {%for i in hi %}
+                                <div class="row" style="border: solid 1px gainsboro; margin: 0 50px; display: flex; align-items: center;">
+                                    <div class="col-2 p-1 pl-3" style="text-align:left;">
+                                        <input type="checkbox" class="check" name="allcheck" onclick="check(this)" value="{{선물세트금액}}">&nbsp;&nbsp;&nbsp;&nbsp; <!-- value="{{i.price}}"로 바꾸면 됩니다.-->
+                                        <img src="{% static 'img/{{선물세트이름}}.jpg' %}" width="80px" height="80px"> 
+                                    </div>
+                                    <div class="col-2 p-1">
+                                        <div><p class="pt-3">{{present.setname}}</p></div>
+                                    </div>
+                                    <div class="col-5 p-1" style=" text-align:right;">
+                                        <input type="text" id="cart_hidden_price{{i}}" class="cart_hidden_price" name="price" value="{{선물세트금액}}" style="visibility: hidden;">  <!-- value={{i.price}} -->
+                                        <input type="text" id="cart_count{{i}}" class="cart_count" value="1" size="1"> <!-- {{i.count}} -->
+                                        <button class="plus" onclick="plus('{{i}}')"><i class="fas fa-plus fa-xl"></i></button>
+                                        <button class="minus" onclick="minus('{{i}}')"><i class="fas fa-minus fa-xl"></i></button>
+                                    </div>
+                                    <div class="col-2 p-1" style=" text-align:center;">
+                                        <div id="sum{{i}}" class="sum">원</div> <!-- {{i.price}} -->
+                                    </div>
+                                    <div class="col-1 p-1" style=" text-align:right;">
+                                        <a href="#"><button class="cart_delete_btn" onclick="deleteBtn();">삭제</button></a> <!-- delete/i.id -->
+                                    </div>
+                                </div>
+                                {%endfor%}                              
+                            </div>
+                        
+                            <div class="cartSum">
+                                상품가격 <span class="price_sum">0원</span> <i class="fas fa-plus fa-xl"></i> 배송비 <span class="delivery"> 0원</span> <i class="fas fa-equals fa-xl"></i> 주문금액 <span class="price_sum2"> 0원</span>
+                            </div>
+                            <div class="cartbtn">
+                                <a href="{% url 'search' %}" target="_parent"><button class="cartbtn1">계속 쇼핑하기</button></a>
+                                <a href="{% url 'pay' %}" onclick="window.open(this.href, '_blank', 'width=500px,height=500px,toolbars=no,scrollbars=no'); return false;"><button class="cartbtn2">구매하기</button></a>
+                            </div>     
+                            <!-- mypage_cart 끝 -->
+                        </div>
+                        <div class="tab-pane fade" id="history">
+                            <!-- mypage_history 시작 -->
+                            <div>
+                                {%for i in hi %}
+                                <div class="history_list">
+                                    <div class="date mb-0">
+                                        <div class="mt-3 ml-2" style="float: left;">주문일 2020년 10월 2일</div>
+                                        <div class="mt-3 mr-2" style="float: right;"><a href="#">주문상세보기</a></div>
+                                    </div>
+                                    <div class="row" style="border: solid 1px gainsboro; margin: 0 50px;">
+                                        <div class="col-3 p-3" style="border-right: solid 1px gainsboro; text-align:center;">
+                                            <img class="m-3" src="{% static 'img/{{선물세트이름}}.jpg' %}" width="150px" height="150px">
+                                        </div>
+                                        <div class="col-6 p-3" style="border-right: solid 1px gainsboro;">
+                                            <p class="historyNameTxt pt-3 mt-5 mb-0">{{선물세트이름}}</p> 
+                                            <small>{{가격}}원 / 1개</small> 
+                                        </div>
+                                        <div class="col-3 p-3" style="text-align:center;">
+                                            <div>주문완료</div>
+                                            <a href="#"><button class="historyBtn1">배송조회</button></a><br>
+                                            <a href="#"><button class="historyBtn1">교환신청</button></a><br>
+                                            <a href="#"><button class="historyBtn1">반품신청</button></a><br>
+                                            <a href="#"><button class="historyBtn1">구매후기쓰기</button></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                {%endfor%}
+                            </div>
+                            <!-- mypage_history 끝 -->
+                        </div>
+                        <div class="tab-pane fade" id="save">
+                            <!-- mypage_save 시작 -->
+                            <script type="text/javascript">
+                                // [상품] 누르면 상품만, [선물세트] 누르면 선물세트만 보이게
+                                $(document).ready(function(){
+                                    $("#2").click(function(){
+                                        $("#show2").css("display", "block");
+                                        $("#show1").css("display", "none");
+                                        $("#2").attr("class", "savebtn2");
+                                        $("#1").attr("class", "savebtn1");
+                                    });
+                        
+                                    $("#1").click(function(){
+                                         $("#show1").css("display", "block");
+                                        $("#show2").css("display", "none");
+                                        $("#1").attr("class", "savebtn2");
+                                        $("#2").attr("class", "savebtn1");
+                                    });
+                                    
+                                });
+                                
+                                function deleteBtn(){
+                                    if (confirm("삭제하시겠습니까?")) {
+                                        //삭제하기
+                                    } else {
+                                        //취소
+                                    }
+                                }       
+                        
+                                function cartBtn(){
+                                    if (confirm("장바구니에 담겼습니다. 장바구니로 이동하시겠습니까?")) {
+                                        //장바구니에 담겨짐
+                                        window.parent.document.location.href = "#";
+                                    } else {
+                                        //취소
+                                    }
+                                }    
+                        
+                                // 체크박스 전체선택, 전체해제
+                                // 상품에서의 체크박스 전체선택, 전체해제
+                                function checkAll3(){
+                                    if( $("#check_all3").is(':checked') ){
+                                    $("input[name=allcheck3]").prop("checked", true);
+                                    }else{
+                                    $("input[name=allcheck3]").prop("checked", false);
+                                    }
+                                }
+                                // 선물세트에서의 체크박스 전체선택, 전체해제
+                                function checkAll2(){
+                                    if( $("#check_all2").is(':checked') ){
+                                    $("input[name=allcheck2]").prop("checked", true);
+                                    }else{
+                                    $("input[name=allcheck2]").prop("checked", false);
+                                    }
+                                }
+                            </script>
+                            <div class="savebtn">
+                                <button class="savebtn2" id="1">상품</button>
+                                <button class="savebtn1" id="2">선물세트</button>
+                            </div>
+                            <div>
+                                <div class="product_save_list" id="show1">
+                                    <div class="row" style="border: solid 1px gainsboro; margin: 0 50px; display: flex; align-items: center;">
+                                        <div class="col-2 p-1 pl-3" style="text-align:left;">
+                                            <input type="checkbox" id="check_all3" onclick="checkAll3();">&nbsp;&nbsp;&nbsp;&nbsp;전체선택
+                                        </div>
+                                        <div class="col-7 p-1">
+                                            <div><p class="pt-3">상품 이름</p></div>
+                                        </div>
+                                        <div class="col-2 p-1" style=" text-align:center;">
+                                            <div>금액</div>
+                                        </div>
+                                        <div class="col-1 p-1" style=" text-align:right;">
+                                            <button class="all_cart_delete_btn" onclick="deleteBtn();">삭제</button>
+                                        </div>
+                                    </div>
+                                    
+                                    {%for i in hi %}
+                                    <div class="row" style="border: solid 1px gainsboro; margin: 0 50px; display: flex; align-items: center;">
+                                        <div class="col-2 p-1 pl-3" style="text-align:left;">
+                                            <input type="checkbox" class="check" name="allcheck3" onclick="check(this)">&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <img src="{% static 'img/{{상품이름}}.jpg' %}" width="80px" height="80px">
+                                        </div>
+                                        <div class="col-7 p-1">
+                                            <div><p class="pt-3">{{i.상품이름}}</p></div>
+                                        </div>
+                                        <div class="col-2 p-1" style=" text-align:center;">
+                                            <div>{{i.금액}}원</div>
+                                        </div>
+                                        <div class="col-1 p-1" style=" text-align:right;">
+                                            <button class="cart_delete_btn" onclick="deleteBtn();">삭제</button>
+                                        </div>
+                                    </div>
+                                    {%endfor%}
+                                </div>       
+                        
+                                <div class="set_save_list" id="show2" style="display:none;">
+                                    <div class="row" style="border: solid 1px gainsboro; margin: 0 50px; display: flex; align-items: center;">
+                                        <div class="col-2 p-1 pl-3" style="text-align:left;">
+                                            <input type="checkbox" id="check_all2" onclick="checkAll2();">&nbsp;&nbsp;&nbsp;&nbsp;전체선택
+                                        </div>
+                                        <div class="col-7 p-1">
+                                            <div><p class="pt-3">선물세트 이름</p></div>
+                                        </div>
+                                        <div class="col-2 p-1" style=" text-align:center;">
+                                            <div>금액</div>
+                                        </div>
+                                        <div class="col-1 p-1" style=" text-align:right;">
+                                            <button class="all_cart_delete_btn" onclick="deleteBtn();">삭제</button>
+                                        </div>
+                                    </div>
+                                    {%for i in hi %}
+                                    <div class="row" style="border: solid 1px gainsboro; margin: 0 50px; display: flex; align-items: center;">
+                                        <div class="col-2 p-1 pl-3" style="text-align:left;">
+                                            <input type="checkbox" class="check" name="allcheck2" onclick="check(this)">&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <img src="{% static 'img/{{상품이름}}.jpg' %}" width="80px" height="80px">
+                                        </div>
+                                        <div class="col-7 p-1">
+                                            <div><p class="pt-3">{{i.상품이름}}</p></div>
+                                        </div>
+                                        <div class="col-2 p-1" style=" text-align:center;">
+                                            <div>{{i.금액}}원</div>
+                                        </div>
+                                        <div class="col-1 p-1" style=" text-align:right;">
+                                            <a href="#"><button class="cart_delete_btn" onclick="cartBtn();">담기</button></a> <!--장바구니에 담는 함수-->
+                                            <button class="cart_delete_btn" onclick="deleteBtn();">삭제</button>
+                                        </div>
+                                    </div>
+                                    {%endfor%}
+                                </div>       
+                            </div>
+                            <!-- mypage_save 끝 -->
+                        </div>
+                        <div class="tab-pane fade" id="modify">
+                            <!-- mypage_modify 시작 -->
+                            <script type="text/javascript">
+                                function modifyBtn(){
+                                    if($("#pw").val()==""){
+                                        alert("비밀번호를 입력해주세요.");
+                                        return false;
+                                    }else if($("#pw2").val()==""){
+                                        alert("비밀번호를 재입력해주세요.");
+                                        return false;
+                                    }else if($("#pw").val()!=$("#pw2").val()){
+                                        alert("비밀번호가 일치하지 않습니다.");
+                                        return false;
+                                    }else{
+                                        alert("개인정보가 수정되었습니다.");
+                                        document.getElementById('modifyform').submit();
+                                        window.location.href = "#";
+                                    }
+                                    return false;
+                                }       
+                            </script>
+                            <div style="justify-content:center;">
+                                <br>	
+                                <div class="card bg-light" style="width: 500px; margin-left:250px;">
+                                    <article class="card-body mx-auto" style="max-width: 400px;">
+                                        
+                                        <form id="modifyform">
+                                            <div class="form-group input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"> <i class="fa fa-user fa-xl"></i> </span>
+                                                </div>
+                                                <input name="" class="form-control" placeholder="{{customer.name}}" type="text" >
+                                            </div> <!-- form-group// -->
+                                            <div class="form-group input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                                                </div>
+                                                <input name="" class="form-control" placeholder="{{customer.email}}" type="email" >
+                                            </div> <!-- form-group// -->
+                                            <div class="form-group input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                                                </div>
+                                                <input class="form-control" id="pw" placeholder="비밀번호" type="password">
+                                            </div> <!-- form-group// -->
+                                            <div class="form-group input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                                                </div>
+                                                <input class="form-control" id="pw2" placeholder="비밀번호 재입력" type="password">
+                                            </div> <!-- form-group// -->
+                                            <div class="form-group">
+                                                <button type="button" class="btn btn-danger btn-block" onclick="modifyBtn();"> 수정하기 </button>
+                                            </div> <!-- form-group// -->
+                                        </form>
+                                    </article>
+                                </div> <!-- card.// -->
+                        
+                            </div>
+                            <!--container end.//-->
+                        
+                            <br><br>
+                        
+
+                            <!-- mypage_modify 끝 -->
+                        </div>
+                    </div>
+                    <hr>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
