@@ -24,8 +24,9 @@ def exer(request):
     return render(request, 'app/exer.html',context)
 
 # 메인 페이지2
-def home(request):
-    context  = {'check' : login_check(request),'name': str(request.user) }
+def home(request,pk_test):
+    customer = Customer.objects.get(id=pk_test)
+    context  = {'customer':customer,'check' : login_check(request),'name': str(request.user) }
     return render(request, 'app/index.html',context)
     
 def login_check(request):

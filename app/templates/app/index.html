@@ -84,8 +84,8 @@
 
                 <!-- 일반유저로 로그인 -->
                 {%if check == '1'%}
-                    <a href="#"><span>{{name}}</span><span class="fas fa-user-circle col-peo"></span></a>
-                    <a href="{% url 'logout' %}">로그아웃</a>
+                        <a href="{%url 'mypage' id %}"><span>{{name}}</span><span class="fas fa-user-circle col-peo"></span></a>
+                        <a href="{% url 'logout' %}">로그아웃</a>
                 {%endif%}
 
 
